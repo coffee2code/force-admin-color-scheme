@@ -69,7 +69,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	public function test_version() {
-		$this->assertEquals( '1.0', c2c_ForceAdminColorScheme::version() );
+		$this->assertEquals( '1.1', c2c_ForceAdminColorScheme::version() );
 	}
 
 	public function test_setting_name_does_not_change() {
@@ -84,8 +84,8 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_filter( 'get_user_option_admin_color', array( 'c2c_ForceAdminColorScheme', 'force_admin_color'           ) ) );
 		$this->assertEquals( 20, has_action( 'admin_color_scheme_picker',   array( 'c2c_ForceAdminColorScheme', 'add_checkbox'                ) ) );
 		$this->assertEquals( 10, has_action( 'personal_options_update',     array( 'c2c_ForceAdminColorScheme', 'save_setting'                ) ) );
-		$this->assertEquals( 10, has_action( 'load-profile.php',            array( 'c2c_ForceAdminColorScheme', 'hide_admin_color_input'      ) ) );
-		$this->assertEquals( 10, has_action( 'personal_options',            array( 'c2c_ForceAdminColorScheme', 'restore_wp_admin_css_colors' ) ) );
+		$this->assertEquals( 8,  has_action( 'admin_color_scheme_picker',   array( 'c2c_ForceAdminColorScheme', 'hide_admin_color_input'      ), 8 ) );
+		$this->assertEquals( 10, has_action( 'load-profile.php',            array( 'c2c_ForceAdminColorScheme', 'register_css'                ) ) );
 	}
 
 	public function test_no_default_forced_admin_color() {
@@ -98,14 +98,29 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( 'ocean', c2c_ForceAdminColorScheme::get_forced_admin_color() );
 	}
 
+	public function test_set_forced_admin_color_sets_setting_value() {
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+
+		$this->assertEquals( 'ocean', get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
+	}
+
 	public function test_user_color_scheme_is_the_forced_color_scheme() {
 		$this->create_user( 'editor' );
 
-		$this->assertEquals( 'fresh', get_user_meta( get_current_user_id(), 'admin_color', true ) );
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 
 		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
 
-		$this->assertEquals( 'ocean', get_user_meta( get_current_user_id(), 'admin_color', true ) );
+		$this->assertEquals( 'ocean', get_user_option( 'admin_color' ) );
+	}
+
+	public function test_setting_forced_color_scheme_to_empty_string_deletes_option() {
+		$this->test_user_color_scheme_is_the_forced_color_scheme();
+
+		c2c_ForceAdminColorScheme::set_forced_admin_color( '' );
+
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
+		$this->assertFalse( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 	}
 
 	public function test_uninstall_deletes_option() {
