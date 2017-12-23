@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 4.9
-Stable tag: 1.1
+Stable tag: 1.1.1
 
 Force a single admin color scheme for all users of the site.
 
@@ -99,6 +99,9 @@ Yes.
 
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Trivial update: updated unit test bootstrap; noted compatibility through WP 4.9+; added README.md; added GitHub link to readme; updated copyright date (2018)
 
 = 1.1 =
 Recommended update.
