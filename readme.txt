@@ -64,6 +64,7 @@ Yes.
 * Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
+* New: Add a list of ideas for future consideration
 
 = 1.1 (2016-03-09) =
 * New: Add `get_setting_name()` as a getter for plugin's setting name and use it everywhere internally instead of referencing private class variable.

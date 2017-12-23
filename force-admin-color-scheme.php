@@ -22,6 +22,18 @@
  */
 
 /*
+ * TODO:
+ * - Support use of a constant that configures the admin color scheme,
+ *   in doing so disables the profile checkbox added by this plugin.
+ *   For admin users, provide a notice somewhere (in lieu of the color scheme
+ *   picker?) that indicates the constant is in use for force a given scheme.
+ * - Validate the color scheme that is configured (in the event a color scheme
+ *   is no longer available, ignore it and show notice to admin user).
+ * - Record and report (to other admins) the name (and possibly datetime) of
+ *   the user who forced the admin color scheme.
+ */
+
+/*
 	Copyright (c) 2014-2018 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
