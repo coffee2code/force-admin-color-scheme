@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Force a single admin color scheme for all users of the site.
  *
- * Compatible with WordPress 4.1 through 4.4+.
+ * Compatible with WordPress 4.1 through 4.9+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
