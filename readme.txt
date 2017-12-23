@@ -21,7 +21,7 @@ Though usually an individually configurable aspect of WordPress, there are times
 
 Additionally, the plugin removes the "Admin Color Scheme" profile setting from users who don't have the capability to set the admin color scheme globally since being able to set its value gives them the false impression that it may actually apply.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/force-admin-color-scheme/) | [Plugin Directory Page](https://wordpress.org/plugins/force-admin-color-scheme/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/force-admin-color-scheme/) | [Plugin Directory Page](https://wordpress.org/plugins/force-admin-color-scheme/) | [GitHub](https://github.com/coffee2code/force-admin-color-scheme/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -59,6 +59,7 @@ Yes.
 * Change: Update unit test bootstrap
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
+* Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
