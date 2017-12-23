@@ -54,6 +54,9 @@ Yes.
 
 == Changelog ==
 
+= () =
+* Change: Update copyright date (2018)
+
 = 1.1 (2016-03-09) =
 * New: Add `get_setting_name()` as a getter for plugin's setting name and use it everywhere internally instead of referencing private class variable.
 * New: Add `set_forced_admin_color()` as a setter for forced admin color. Deletes setting if value is falsey.
