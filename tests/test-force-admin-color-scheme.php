@@ -12,8 +12,8 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		// Re-initialize plugin now that WP_ADMIN is true.
 		c2c_ForceAdminColorScheme::init();
 
-		// Re-fire admin_init action.
-		do_action( 'admin_init' );
+		// Re-fire init handler as admin_init action would've done.
+		c2c_ForceAdminColorScheme::do_init();
 	}
 
 	public function tearDown() {
