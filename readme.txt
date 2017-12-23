@@ -12,7 +12,7 @@ Force a single admin color scheme for all users of the site.
 
 == Description ==
 
-Though usually an individually configurable aspect of WordPress, there are times when forcing a single admin color schemes upon all users of a site can be warranted, such as to:
+Though it is typically an individually configurable aspect of WordPress, there are times when forcing a single admin color scheme upon all users of a site can be warranted, such as to:
 
 * Provide a unique backend color scheme for multiple sites used by the same set of users to reinforce the difference between the sites.
 * Clearly denote backend differences between a production and staging/test instance of a site. Especially given that in this situation with the same plugins active and often the same data present, it can be easy to get mixed up about what site you're actually on.
@@ -54,13 +54,14 @@ Yes.
 
 == Changelog ==
 
-= () =
+= 1.1.1. (2017-12-22) =
 * Fix: Add missing underscore to function call; `_()` should have been `__()`
 * New: Add README.md
 * Change: Update unit test bootstrap
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
     * Enable more error output for unit tests
 * Change: In unit tests, fire `do_init()` manually instead of triggering 'admin_init' to avoid a PHP warning
+* Fix: Fix typo in readme
 * Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
