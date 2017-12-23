@@ -212,7 +212,7 @@ class c2c_ForceAdminColorScheme {
 			__( 'Force this admin color scheme on all users?', 'force-admin-color-scheme' ),
 			(
 				( $c = self::get_forced_admin_color() ) ?
-					'<em>' . sprintf( _( 'Currently forced admin color: %s', 'force-admin-color-scheme' ), '<strong>' . ucfirst( $c ) . '</strong>' ) . '</em>' :
+					'<em>' . sprintf( __( 'Currently forced admin color: %s', 'force-admin-color-scheme' ), '<strong>' . ucfirst( $c ) . '</strong>' ) . '</em>' :
 					''
 			)
 		);

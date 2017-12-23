@@ -55,6 +55,7 @@ Yes.
 == Changelog ==
 
 = () =
+* Fix: Add missing underscore to function call; `_()` should have been `__()`
 * New: Add README.md
 * Change: Update unit test bootstrap
     * Default `WP_TESTS_DIR` to `/tmp/wordpress-tests-lib` rather than erroring out if not defined via environment variable
