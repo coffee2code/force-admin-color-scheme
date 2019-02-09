@@ -7,7 +7,7 @@
  * Author URI:  http://coffee2code.com/
  * Text Domain: force-admin-color-scheme
  * License:     GPLv2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Description: Force a single admin color scheme for all users of the site.
  *
  * Compatible with WordPress 4.1 through 4.9+.
