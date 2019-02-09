@@ -3,6 +3,7 @@
 ## _(in-progress)_
 * New: Add CHANGELOG.md and move all but most recent changelog entries into it
 * Change: Update License URI to be HTTPS
+* Change: Split paragraph in README.md's "Support" section into two
 
 ## 1.1.1. _(2017-12-22)_
 * Fix: Add missing underscore to function call; `_()` should have been `__()`
