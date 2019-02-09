@@ -7,7 +7,7 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite>
+		<testsuite name="force-admin-color-scheme">
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 		</testsuite>
 	</testsuites>
