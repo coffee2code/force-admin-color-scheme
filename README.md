@@ -2,6 +2,8 @@
 
 A plugin for WordPress that forces a single admin color scheme for all users of the site.
 
+This plugin is available in the WordPress Plugin Directory: https://wordpress.org/plugins/force-admin-color-scheme/
+
 
 ## Installation
 
