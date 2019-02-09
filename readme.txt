@@ -54,7 +54,7 @@ Yes.
 
 == Changelog ==
 
-= 1.1.1. (2017-12-22) =
+== 1.1.1 (2017-12-22) =
 * Fix: Add missing underscore to function call; `_()` should have been `__()`
 * New: Add README.md
 * Change: Update unit test bootstrap
@@ -94,8 +94,7 @@ Yes.
 * Change: Note compatibility through WP 4.4+.
 * Change: Update copyright date (2016).
 
-= 1.0 (2014-09-26) =
-* Initial release
+= Full changelog is available in [CHANGELOG.md](CHANGELOG.md). =
 
 
 == Upgrade Notice ==
