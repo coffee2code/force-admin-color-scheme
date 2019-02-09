@@ -6,6 +6,7 @@
 * Change: Add README.md link to plugin's page in Plugin Directory
 * Change: Update copyright date (2019)
 * Change: Update License URI to be HTTPS
+* Change: Update installation instruction to prefer built-in installer over .zip file
 * Change: Split paragraph in README.md's "Support" section into two
 
 ## 1.1.1. _(2017-12-22)_
