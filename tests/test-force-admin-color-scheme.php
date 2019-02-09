@@ -69,7 +69,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	public function test_version() {
-		$this->assertEquals( '1.1.1', c2c_ForceAdminColorScheme::version() );
+		$this->assertEquals( '1.2', c2c_ForceAdminColorScheme::version() );
 	}
 
 	public function test_setting_name_does_not_change() {

@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 5.1
-Stable tag: 1.1.1
+Stable tag: 1.2
 
 Force a single admin color scheme for all users of the site.
 
@@ -54,6 +54,17 @@ Yes.
 
 == Changelog ==
 
+= 1.2 (2019-02-09) =
+* Change: Initialize plugin on `plugins_loaded` action instead of on load
+* New: Add CHANGELOG.md and move all but most recent changelog entries into it
+* Change: Note compatibility through WP 5.1+
+* Change: Add README.md link to plugin's page in Plugin Directory
+* Change: Update unit test install script and bootstrap to use latest WP unit test repo
+* Change: Update copyright date (2019)
+* Change: Update License URI to be HTTPS
+* Change: Update installation instruction to prefer built-in installer over .zip file
+* Change: Split paragraph in README.md's "Support" section into two
+
 == 1.1.1 (2017-12-22) =
 * Fix: Add missing underscore to function call; `_()` should have been `__()`
 * New: Add README.md
@@ -98,6 +109,9 @@ Yes.
 
 
 == Upgrade Notice ==
+
+= 1.2 =
+Minor update: tweaked plugin initialization, noted compatibility through WP 5.1+, created CHANGELOG.md to store historical changelog outside of readme.txt, and updated copyright date (2019)
 
 = 1.1.1 =
 Trivial update: updated unit test bootstrap; noted compatibility through WP 4.9+; added README.md; added GitHub link to readme; updated copyright date (2018)
