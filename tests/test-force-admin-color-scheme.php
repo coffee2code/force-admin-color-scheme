@@ -76,6 +76,10 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( 'c2c_forced_admin_color', c2c_ForceAdminColorScheme::get_setting_name() );
 	}
 
+	public function test_hooks_plugins_loaded() {
+		$this->assertEquals( 10, has_action( 'plugins_loaded', array( 'c2c_ForceAdminColorScheme', 'init' ) ) );
+	}
+
 	public function test_hooks_admin_init() {
 		$this->assertEquals( 10, has_filter( 'admin_init', array( 'c2c_ForceAdminColorScheme', 'do_init' ) ) );
 	}

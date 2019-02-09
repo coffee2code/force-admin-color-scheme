@@ -298,6 +298,6 @@ class c2c_ForceAdminColorScheme {
 
 } // end c2c_ForceAdminColorScheme
 
-c2c_ForceAdminColorScheme::init();
+add_action( 'plugins_loaded', array( 'c2c_ForceAdminColorScheme', 'init' ) );
 
 endif; // end if !class_exists()
