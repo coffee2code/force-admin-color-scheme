@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Change: Note compatibility through WP 5.3+
+* Change: Tweak wording of one of the use-cases for the plugin
 * Change: Update copyright date (2020)
 
 ## 1.2 _(2019-02-09)_

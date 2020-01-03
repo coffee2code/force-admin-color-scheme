@@ -16,7 +16,7 @@ Though it is typically an individually configurable aspect of WordPress, there a
 
 * Provide a unique backend color scheme for multiple sites used by the same set of users to reinforce the difference between the sites.
 * Clearly denote backend differences between a production and staging/test instance of a site. Especially given that in this situation with the same plugins active and often the same data present, it can be easy to get mixed up about what site you're actually on.
-* Force a site branding appropriate color scheme.
+* Force a site brand-appropriate color scheme.
 * Crush the expression of individuality under your iron fist.
 
 Additionally, the plugin removes the "Admin Color Scheme" profile setting from users who don't have the capability to set the admin color scheme globally since being able to set its value gives them the false impression that it may actually apply.
