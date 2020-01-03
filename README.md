@@ -9,6 +9,8 @@ This plugin is available in the WordPress Plugin Directory: https://wordpress.or
 
 1. Install via the built-in WordPress plugin installer. Or install the plugin code inside the plugins directory for your site (typically `/wp-content/plugins/`).
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
+3. As an admin, edit your own profile (Users -> Your Profile) and choose the Admin Color Scheme you want to apply to all users by setting the color scheme for yourself.
+4. Check the "Force this admin color scheme on all users?" checkbox and then save the update to your profile.
 
 
 ## Additional Documentation
