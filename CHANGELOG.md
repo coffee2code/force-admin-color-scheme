@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.3+
+
 ## 1.2 _(2019-02-09)_
 * Change: Initialize plugin on `plugins_loaded` action instead of on load
 * New: Add CHANGELOG.md and move all but most recent changelog entries into it
