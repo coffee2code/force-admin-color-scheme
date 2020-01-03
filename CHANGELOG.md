@@ -1,6 +1,6 @@
 # Changelog
 
-## _(in-progress)_
+## 1.2.1 _(2020-01-02)_
 * Change: Note compatibility through WP 5.3+
 * Change: Include additional usage steps in the "Installation" section of README.md
 * Change: Tweak wording of one of the use-cases for the plugin
