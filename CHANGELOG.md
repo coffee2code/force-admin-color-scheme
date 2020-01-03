@@ -4,6 +4,7 @@
 * Change: Note compatibility through WP 5.3+
 * Change: Tweak wording of one of the use-cases for the plugin
 * Change: Update copyright date (2020)
+* New: Add link to CHANGELOG.md in README.md
 * Fix: Use full path to CHANGELOG.md in the Changelog section of readme.txt
 
 ## 1.2 _(2019-02-09)_
