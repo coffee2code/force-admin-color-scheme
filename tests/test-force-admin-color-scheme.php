@@ -19,9 +19,6 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	public function tearDown() {
 		parent::tearDown();
 		$this->unset_current_user();
-		// Ensure the filter gets removed
-//		remove_filter( 'c2c_always_allow_admin_comments_disable', array( $this, 'disable_admin_commenting_on_specified_post' ), 10, 2 );
-//		remove_filter( 'c2c_always_allow_admin_comments_disable', array( $this, 'enable_admin_commenting_on_specified_post' ), 10, 2 );
 	}
 
 
