@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.4+
+
 ## 1.2.1 _(2020-01-02)_
 * Change: Note compatibility through WP 5.3+
 * Change: Include additional usage steps in the "Installation" section of README.md
