@@ -137,6 +137,20 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * force_admin_color()
+	 */
+
+	public function test_force_admin_color_returns_passed_in_color_if_forced_color_not_set() {
+		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::force_admin_color( 'coffee' ) );
+	}
+
+	public function test_force_admin_color_returns_forced_color_if_set() {
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'sunrise' );
+
+		$this->assertEquals( 'sunrise', c2c_ForceAdminColorScheme::force_admin_color( 'coffee' ) );
+	}
+
+	/*
 	 * add_checkbox()
 	 */
 
