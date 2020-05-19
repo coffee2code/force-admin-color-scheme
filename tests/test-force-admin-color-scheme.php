@@ -269,6 +269,31 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * output_css()
+	 */
+
+	public function test_output_css_for_user_with_cap() {
+		$this->create_user( 'administrator' );
+		$expected = 'label[for="c2c_forced_admin_color"] { display: block; padding-left: 15px; margin-top: 10px; }';
+
+		$this->expectOutputRegex( '~^<style>' . preg_quote( $expected ) . '</style>$~', c2c_ForceAdminColorScheme::output_css() );
+	}
+
+	public function test_output_css_for_user_without_cap_and_forced_color_is_set() {
+		$this->create_user( 'editor' );
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		$expected = '.user-admin-color-wrap { display: none; }';
+
+		$this->expectOutputRegex( '~^<style>' . preg_quote( $expected ) . '</style>$~', c2c_ForceAdminColorScheme::output_css() );
+	}
+
+	public function test_output_css_for_user_without_cap_and_forced_color_is_not_set() {
+		$this->create_user( 'editor' );
+
+		$this->expectOutputRegex( '~^$~', c2c_ForceAdminColorScheme::output_css() );
+	}
+
+	/*
 	 * constant: C2C_FORCE_ADMIN_COLOR_SCHEME
 	 *
 	 * Note: Due to the nature of constants, once defined they will thereafter
