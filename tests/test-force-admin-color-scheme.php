@@ -89,6 +89,10 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_action( 'load-profile.php',            array( 'c2c_ForceAdminColorScheme', 'register_css'                ) ) );
 	}
 
+	/*
+	 * get_forced_admin_color()
+	 */
+
 	public function test_no_default_forced_admin_color() {
 		$this->assertFalse( c2c_ForceAdminColorScheme::get_forced_admin_color() );
 	}
@@ -97,31 +101,6 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
 
 		$this->assertEquals( 'ocean', c2c_ForceAdminColorScheme::get_forced_admin_color() );
-	}
-
-	public function test_set_forced_admin_color_sets_setting_value() {
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
-
-		$this->assertEquals( 'ocean', get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
-	}
-
-	public function test_user_color_scheme_is_the_forced_color_scheme() {
-		$this->create_user( 'editor' );
-
-		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
-
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
-
-		$this->assertEquals( 'ocean', get_user_option( 'admin_color' ) );
-	}
-
-	public function test_setting_forced_color_scheme_to_empty_string_deletes_option() {
-		$this->test_user_color_scheme_is_the_forced_color_scheme();
-
-		c2c_ForceAdminColorScheme::set_forced_admin_color( '' );
-
-		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
-		$this->assertFalse( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 	}
 
 	public function test_uninstall_deletes_option() {
@@ -142,14 +121,22 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 	public function test_set_forced_admin_color_saves_color_to_option() {
 		$color = 'coffee';
+		$this->create_user( 'editor' );
+
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 
 		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_admin_color( $color ) );
 		$this->assertEquals( $color, get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 	}
 
-	public function test_set_forced_admin_color_unset_option_if_blank_is_sent() {
+	public function test_set_forced_admin_color_unsets_option_if_blank_is_sent() {
+		$this->create_user( 'editor' );
+
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
+
 		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_admin_color( '' ) );
 		$this->assertEmpty( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 	}
 
 	/*
