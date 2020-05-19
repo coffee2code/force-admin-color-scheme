@@ -167,6 +167,56 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * save_setting()
+	 */
+
+	public function test_save_setting_does_not_save_for_user_without_cap() {
+		$user_id = $this->create_user( 'editor' );
+		$_POST = array(
+			'admin_color'            => 'sunrise',
+			'c2c_forced_admin_color' => '1',
+		);
+
+		c2c_ForceAdminColorScheme::save_setting( $user_id );
+
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
+		$this->assertEmpty( c2c_ForceAdminColorScheme::get_forced_admin_color() );
+
+	}
+
+	public function test_save_setting_does_save_for_user_with_cap() {
+		$user_id = $this->create_user( 'administrator' );
+		$_POST = array(
+			'admin_color'            => 'sunrise',
+			'c2c_forced_admin_color' => '1',
+		);
+
+		c2c_ForceAdminColorScheme::save_setting( $user_id );
+
+		$this->assertEquals( 'sunrise', get_user_option( 'admin_color' ) );
+		$this->assertEquals( 'sunrise', c2c_ForceAdminColorScheme::get_forced_admin_color() );
+
+	}
+
+	public function test_save_setting_unsets_setting_for_user_with_cap_when_unchecked() {
+		$user_id = $this->create_user( 'administrator' );
+		$_POST = array(
+			'admin_color'            => 'ocean',
+			'c2c_forced_admin_color' => '0',
+		);
+
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'coffee' );
+		c2c_ForceAdminColorScheme::save_setting( $user_id );
+
+		// The test hasn't actually saved a new color to the user's option
+		// directly, and since the forced color was unset, then the user's
+		// original color should be returned.
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
+		$this->assertFalse( c2c_ForceAdminColorScheme::get_forced_admin_color() );
+
+	}
+
+	/*
 	 * constant: C2C_FORCE_ADMIN_COLOR_SCHEME
 	 *
 	 * Note: Due to the nature of constants, once defined they will thereafter
