@@ -141,6 +141,18 @@ class c2c_ForceAdminColorScheme {
 	}
 
 	/**
+	 * Determines if the constant is being used to set a forced admin color
+	 * scheme
+	 *
+	 * @since 1.3
+	 *
+	 * @return bool True if the constant is being used, else false.
+	 */
+	public static function is_constant_set() {
+		return defined( 'C2C_FORCE_ADMIN_COLOR_SCHEME' ) && ! empty( C2C_FORCE_ADMIN_COLOR_SCHEME );
+	}
+
+	/**
 	 * Returns the forced admin color scheme.
 	 *
 	 * @since 1.1
@@ -149,9 +161,7 @@ class c2c_ForceAdminColorScheme {
 	 * @return string|false
 	 */
 	public static function get_forced_admin_color() {
-		return defined( 'C2C_FORCE_ADMIN_COLOR_SCHEME' ) && ! empty( C2C_FORCE_ADMIN_COLOR_SCHEME )
-			? C2C_FORCE_ADMIN_COLOR_SCHEME
-			: get_option( self::get_setting_name() );
+		return self::is_constant_set() ? C2C_FORCE_ADMIN_COLOR_SCHEME : get_option( self::get_setting_name() );
 	}
 
 	/**

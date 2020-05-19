@@ -90,6 +90,14 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * is_constant_set()
+	 */
+
+	public function test_is_constant_set_when_constant_is_not_set() {
+		$this->assertFalse( c2c_ForceAdminColorScheme::is_constant_set() );
+	}
+
+	/*
 	 * get_forced_admin_color()
 	 */
 
@@ -331,6 +339,10 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::get_forced_admin_color() );
 		$this->assertEquals( 'coffee', get_user_option( 'admin_color' ) );
+	}
+
+	public function test_is_constant_set_when_constant_is_set() {
+		$this->assertTrue( c2c_ForceAdminColorScheme::is_constant_set() );
 	}
 
 }
