@@ -146,7 +146,7 @@ class c2c_ForceAdminColorScheme {
 	 * @since 1.1
 	 * @since 1.3 Added support for constant C2C_FORCE_ADMIN_COLOR_SCHEME.
 	 *
-	 * @return string
+	 * @return string|false
 	 */
 	public static function get_forced_admin_color() {
 		return defined( 'C2C_FORCE_ADMIN_COLOR_SCHEME' ) && ! empty( C2C_FORCE_ADMIN_COLOR_SCHEME )
