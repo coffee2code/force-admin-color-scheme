@@ -158,7 +158,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'administrator' );
 
 		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
-		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true"  checked=\'checked\'/> '
+		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" checked=\'checked\' /> '
 			. 'Force this admin color scheme on all users? '
 			. '<em>Currently forced admin color: <strong>Ocean</strong></em>'
 			. '</label>';

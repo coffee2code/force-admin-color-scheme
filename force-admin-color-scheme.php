@@ -208,7 +208,7 @@ class c2c_ForceAdminColorScheme {
 		$setting = self::get_setting_name();
 
 		printf(
-			'<label for="%s"><input name="%s" type="checkbox" id="%s" value="true" %s/> %s %s</label>',
+			'<label for="%s"><input name="%s" type="checkbox" id="%s" value="true"%s /> %s %s</label>',
 			esc_attr( $setting ),
 			esc_attr( $setting ),
 			esc_attr( $setting ),
