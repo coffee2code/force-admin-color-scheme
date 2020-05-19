@@ -137,6 +137,22 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * set_forced_admin_color()
+	 */
+
+	public function test_set_forced_admin_color_saves_color_to_option() {
+		$color = 'coffee';
+
+		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_admin_color( $color ) );
+		$this->assertEquals( $color, get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
+	}
+
+	public function test_set_forced_admin_color_unset_option_if_blank_is_sent() {
+		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_admin_color( '' ) );
+		$this->assertEmpty( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
+	}
+
+	/*
 	 * force_admin_color()
 	 */
 

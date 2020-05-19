@@ -8,7 +8,7 @@
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
 * Unit tests:
-    * New: Add tests for `add_checkbox()`, `force_admin_color()`, `hide_admin_color_input()`, `output_css()`, `register_css()`, `save_setting()`
+    * New: Add tests for `add_checkbox()`, `force_admin_color()`, `hide_admin_color_input()`, `output_css()`, `register_css()`, `save_setting()`, `set_forced_admin_color()`
     * Change: Remove commented out code
 
 ## 1.2.1 _(2020-01-02)_
