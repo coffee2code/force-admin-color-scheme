@@ -255,6 +255,20 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * register_css()
+	 */
+
+	public function test_output_css_is_not_hooked_without_call_to_register_css_() {
+		$this->assertFalse( has_action( 'admin_head', array( 'c2c_ForceAdminColorScheme', 'output_css' ) ) );
+	}
+
+	public function test_register_css() {
+		c2c_ForceAdminColorScheme::register_css();
+
+		$this->assertEquals( 10, has_action( 'admin_head', array( 'c2c_ForceAdminColorScheme', 'output_css' ) ) );
+	}
+
+	/*
 	 * constant: C2C_FORCE_ADMIN_COLOR_SCHEME
 	 *
 	 * Note: Due to the nature of constants, once defined they will thereafter
