@@ -252,12 +252,14 @@ class c2c_ForceAdminColorScheme {
 	 * Saves the admin user's admin color scheme as the forced admin color
 	 * scheme if the checkbox is checked.
 	 *
+	 * Note: Does not save value if the constant is in use.
+	 *
 	 * @since 1.0
 	 *
 	 * @param  $user_id The user ID.
 	 */
 	public static function save_setting( $user_id ) {
-		if ( current_user_can( 'manage_options' ) ) {
+		if ( current_user_can( 'manage_options' ) && ! self::is_constant_set() ) {
 			// Unset the forced admin color if the checkbox is unchecked or no color was
 			// specified.
 			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] ) ?
