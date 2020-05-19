@@ -217,6 +217,44 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * hide_admin_color_input()
+	 */
+
+	public function test_hide_admin_color_input_does_not_hide_picker_for_user_with_cap() {
+		$this->create_user( 'administrator' );
+
+		c2c_ForceAdminColorScheme::hide_admin_color_input();
+
+		$this->assertEquals( 10, has_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' ) );
+	}
+
+	public function test_hide_admin_color_input_does_not_hide_picker_for_user_with_cap_when_color_is_set() {
+		$this->create_user( 'administrator' );
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'coffee' );
+
+		c2c_ForceAdminColorScheme::hide_admin_color_input();
+
+		$this->assertEquals( 10, has_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' ) );
+	}
+
+	public function test_hide_admin_color_input_does_not_hide_picker_for_user_without_cap_when_color_not_set() {
+		$this->create_user( 'editor' );
+
+		c2c_ForceAdminColorScheme::hide_admin_color_input();
+
+		$this->assertEquals( 10, has_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' ) );
+	}
+
+	public function test_hide_admin_color_input_hides_picker_for_user_without_cap_when_color_is_set() {
+		$this->create_user( 'editor' );
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'coffee' );
+
+		c2c_ForceAdminColorScheme::hide_admin_color_input();
+
+		$this->assertFalse( has_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' ) );
+	}
+
+	/*
 	 * constant: C2C_FORCE_ADMIN_COLOR_SCHEME
 	 *
 	 * Note: Due to the nature of constants, once defined they will thereafter
