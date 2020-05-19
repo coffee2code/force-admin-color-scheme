@@ -217,6 +217,22 @@ class c2c_ForceAdminColorScheme {
 		$forced_admin_color = self::get_forced_admin_color();
 		$setting = self::get_setting_name();
 
+		// Output a message to admin user indicating the constant is being used.
+		if ( self::is_constant_set() ) {
+			printf(
+				'<em class="%s">%s</em>',
+				esc_attr( $setting ),
+				sprintf(
+					/* translator: 1: name of constant, 2: name of forced admin color scheme */
+					__( 'Currently forced admin color (via the constant %1$s, and thus cannot be changed above): %2$s', 'force-admin-color-scheme' ),
+					'<strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>',
+					'<strong>' . ucfirst( self::get_forced_admin_color() ) . '</strong>'
+				)
+			);
+
+			return;
+		}
+
 		printf(
 			'<label for="%s"><input name="%s" type="checkbox" id="%s" value="true"%s /> %s %s</label>',
 			esc_attr( $setting ),
@@ -286,7 +302,8 @@ class c2c_ForceAdminColorScheme {
 
 		// Admins need CSS to align checkbox with admin color picker.
 		if ( current_user_can( 'manage_options' ) ) {
-			$css = 'label[for="' . esc_attr( self::get_setting_name() ) . '"] { display: block; padding-left: 15px; margin-top: 10px; }';
+			$class = esc_attr( self::get_setting_name() );
+			$css = "label[for=\"{$class}\"], .{$class} { display: block; padding-left: 15px; margin-top: 10px; }";
 		}
 		// Non-admins need CSS to hide admin color label if a color is being forced.
 		elseif ( self::get_forced_admin_color() ) {

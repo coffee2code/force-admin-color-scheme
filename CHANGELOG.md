@@ -3,6 +3,7 @@
 ## _(in-progress)_
 * New: Add support for constant to set admin color scheme, `C2C_FORCE_ADMIN_COLOR_SCHEME`
     * New: Add `is_constant_set()` to determine if constant was used to set the forced admin color scheme
+    * New: Show message to users who can force an admin color scheme when the forced admin color scheme was set via the constant
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Change: Tweak attribute spacing for `label` tag
 * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
