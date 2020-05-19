@@ -103,18 +103,6 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( 'ocean', c2c_ForceAdminColorScheme::get_forced_admin_color() );
 	}
 
-	public function test_uninstall_deletes_option() {
-		$option = c2c_ForceAdminColorScheme::get_setting_name();
-
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
-
-		$this->assertEquals( 'ocean', get_option( $option ) );
-
-		c2c_ForceAdminColorScheme::uninstall();
-
-		$this->assertFalse( get_option( $option ) );
-	}
-
 	/*
 	 * set_forced_admin_color()
 	 */
@@ -308,6 +296,22 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'editor' );
 
 		$this->expectOutputRegex( '~^$~', c2c_ForceAdminColorScheme::output_css() );
+	}
+
+	/*
+	 * Options handling
+	 */
+
+	public function test_uninstall_deletes_option() {
+		$option = c2c_ForceAdminColorScheme::get_setting_name();
+
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+
+		$this->assertEquals( 'ocean', get_option( $option ) );
+
+		c2c_ForceAdminColorScheme::uninstall();
+
+		$this->assertFalse( get_option( $option ) );
 	}
 
 	/*
