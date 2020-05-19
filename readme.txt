@@ -30,6 +30,7 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/force-admin-color-sc
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. As an admin, edit your own profile (Users -> Your Profile) and choose the Admin Color Scheme you want to apply to all users by setting the color scheme for yourself.
 4. Check the "Force this admin color scheme on all users?" checkbox and then save the update to your profile.
+5. Optional: Define the `C2C_FORCE_ADMIN_COLOR_SCHEME` constant somewhere (such as `wp-config.php`) if you'd prefer to configure the color that way. Configuring the color in this manner takes precedence over the color as configured via an admin's profile.
 
 
 == Screenshots ==

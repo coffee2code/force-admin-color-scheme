@@ -144,11 +144,14 @@ class c2c_ForceAdminColorScheme {
 	 * Returns the forced admin color scheme.
 	 *
 	 * @since 1.1
+	 * @since 1.3 Added support for constant C2C_FORCE_ADMIN_COLOR_SCHEME.
 	 *
 	 * @return string
 	 */
 	public static function get_forced_admin_color() {
-		return get_option( self::get_setting_name() );
+		return defined( 'C2C_FORCE_ADMIN_COLOR_SCHEME' ) && ! empty( C2C_FORCE_ADMIN_COLOR_SCHEME )
+			? C2C_FORCE_ADMIN_COLOR_SCHEME
+			: get_option( self::get_setting_name() );
 	}
 
 	/**
@@ -156,6 +159,7 @@ class c2c_ForceAdminColorScheme {
 	 *
 	 * NOTE: Does not currently verify if the specified color scheme is valid.
 	 * NOTE: Does not perform any capability checks.
+	 * NOTE: Does not prevent setting admin color when constant is in use.
 	 *
 	 * @since 1.1
 	 *

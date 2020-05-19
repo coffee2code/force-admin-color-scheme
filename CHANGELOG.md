@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add support for constant to set admin color scheme, `C2C_FORCE_ADMIN_COLOR_SCHEME`
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
 * Change: Note compatibility through WP 5.4+

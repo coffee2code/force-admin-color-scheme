@@ -136,4 +136,23 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertFalse( get_option( $option ) );
 	}
 
+	/*
+	 * constant: C2C_FORCE_ADMIN_COLOR_SCHEME
+	 *
+	 * Note: Due to the nature of constants, once defined they will thereafter
+	 * be set, so this should be one of the final tests.
+	 */
+
+	public function test_constant_supercedes_setting() {
+		$this->create_user( 'editor' );
+
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
+
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		define( 'C2C_FORCE_ADMIN_COLOR_SCHEME', 'coffee' );
+
+		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::get_forced_admin_color() );
+		$this->assertEquals( 'coffee', get_user_option( 'admin_color' ) );
+	}
+
 }
