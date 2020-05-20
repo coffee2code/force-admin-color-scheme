@@ -284,7 +284,7 @@ class c2c_ForceAdminColorScheme {
 		// Output a message to admin user indicating the constant is being used.
 		if ( self::is_constant_set() && $forced_admin_color === C2C_FORCE_ADMIN_COLOR_SCHEME ) {
 			printf(
-				'<em class="%s">%s</em>',
+				'<em class="%s notice notice-info">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
 					/* translator: 1: name of constant, 2: name of forced admin color scheme */
@@ -304,7 +304,7 @@ class c2c_ForceAdminColorScheme {
 
 			if ( $forced_admin_color === $filtered_color_scheme ) {
 				printf(
-					'<em class="%s">%s</em>',
+					'<em class="%s notice notice-info">%s</em>',
 					esc_attr( $setting ),
 					sprintf(
 						/* translator: 1: name of filter, 2: name of forced admin color scheme */
@@ -335,7 +335,7 @@ class c2c_ForceAdminColorScheme {
 		// Output notice if constant was defined but with an invalid admin color scheme.
 		if ( self::is_constant_set() && $forced_admin_color !== C2C_FORCE_ADMIN_COLOR_SCHEME ) {
 			printf(
-				'<em class="%s">%s</em>',
+				'<em class="%s notice notice-warning">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
 					/* translator: 1: name of constant, 2: name of forced admin color scheme */
@@ -349,7 +349,7 @@ class c2c_ForceAdminColorScheme {
 		// Output notice if filter was hooked but returns an invalid admin color scheme.
 		if ( $forced_admin_color && $filtered_color_scheme && ( $forced_admin_color !== $filtered_color_scheme ) ) {
 			printf(
-				'<em class="%s">%s</em>',
+				'<em class="%s notice notice-warning">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
 					/* translator: 1: name of filter, 2: name of forced admin color scheme */
@@ -426,6 +426,8 @@ class c2c_ForceAdminColorScheme {
 		}
 
 		if ( $css ) {
+			$css .= "\n.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }";
+
 			echo "<style>{$css}</style>\n";
 		}
 	}
