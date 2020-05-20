@@ -4,7 +4,6 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 
 ***This is not a roadmap or a task list.*** Just because something is listed does not necessarily mean it will ever actually get implemented. Some might be bad ideas. Some might be impractical. Some might either not benefit enough users to justify the effort or might negatively impact too many existing users. Or I may not have the time to devote to the task.
 
-* Validate the color scheme that is configured (in the event a color scheme is no longer available, ignore it and show notice to admin user).
 * Record and report (to other admins) the name (and possibly datetime) of the user who forced the admin color scheme.
 * Add custom capability for being able to restrict users who can set a forced admin color scheme.
 

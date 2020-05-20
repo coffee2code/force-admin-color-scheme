@@ -56,6 +56,10 @@ Uncheck the "Force this admin color scheme?" when updating an administrative pro
 
 Yes, but only via custom coding by making use of the `c2c_force_admin_color_scheme` filter. See the documentation for the filter for an example.
 
+= What happens if a custom admin color scheme was forced, but later the custom admin color scheme is no longer available (e.g. I deactivated the plugin providing the custom admin color scheme)? =
+
+The plugin will recognize that the chosen admin color scheme is no longer valid and will act as if one isn't set. In such a case, users would then see their individually chosen admin color schemes. If the custom admin color scheme becomes available again (before a new existing color scheme is selected as the new scheme to be forced), then the plugin will reinstate it as the forced admin color scheme.
+
 = Does this plugin include unit tests? =
 
 Yes.

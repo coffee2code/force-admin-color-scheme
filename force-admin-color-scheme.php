@@ -155,32 +155,68 @@ class c2c_ForceAdminColorScheme {
 	/**
 	 * Returns the forced admin color scheme.
 	 *
+	 * Forced admin color scheme is determined in this order:
+	 * - The value of the constant `C2C_FORCE_ADMIN_COLOR_SCHEME`, if set and valid.
+	 * - The return value of the filter `c2c_force_admin_color_scheme`, if valid.
+	 * - The configured value previously saved by the plugin, if still valid.
+	 * - An empty string to indicate no admin color scheme is being forced.
+	 *
+	 * The admin color scheme is checked for validity. If the color scheme does
+	 * not currently exist, then the color scheme is not returned.
+	 *
 	 * @since 1.1
 	 * @since 1.3 Added support for constant C2C_FORCE_ADMIN_COLOR_SCHEME.
 	 *
-	 * @return string|false
+	 * @return string The admin color scheme or empty string if color scheme was
+	 *                not set or is currently invalid.
 	 */
 	public static function get_forced_admin_color() {
-		return self::is_constant_set()
-			? C2C_FORCE_ADMIN_COLOR_SCHEME
-			: apply_filters( 'c2c_force_admin_color_scheme', get_option( self::get_setting_name() ) );
+		$color_scheme = '';
+
+		// Constant takes precedence.
+		if ( self::is_constant_set() ) {
+			$color_scheme = C2C_FORCE_ADMIN_COLOR_SCHEME;
+			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+				$color_scheme = '';
+			}
+		}
+
+		// If constant not defined or invalid, then filter current valie.
+		if ( ! $color_scheme ) {
+			$color_scheme = apply_filters( 'c2c_force_admin_color_scheme', get_option( self::get_setting_name() ) );
+			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+				$color_scheme = '';
+			}
+		}
+
+		// If filtered value is not defined or invalid, then use current valie.
+		if ( ! $color_scheme ) {
+			$color_scheme = get_option( self::get_setting_name() );
+			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+				$color_scheme = '';
+			}
+		}
+
+		return $color_scheme;
 	}
 
 	/**
 	 * Sets the forced admin color scheme.
 	 *
-	 * NOTE: Does not currently verify if the specified color scheme is valid.
 	 * NOTE: Does not perform any capability checks.
 	 * NOTE: Does not prevent setting admin color when constant is in use.
 	 *
 	 * @since 1.1
 	 *
 	 * @param  string $color_scheme The color scheme name.
-	 * @return string The color scheme.
+	 * @return string The admin color scheme or empty string if color scheme was
+	 *                invalid and thus not saved.
 	 */
 	public static function set_forced_admin_color( $color_scheme ) {
 		if ( ! $color_scheme ) {
 			delete_option( self::get_setting_name() );
+		} elseif ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+			$color_scheme = '';
 		} else {
 			update_option( self::get_setting_name(), $color_scheme );
 		}
@@ -205,13 +241,16 @@ class c2c_ForceAdminColorScheme {
 	 * Overrides the user's admin color scheme with the forced admin color
 	 * scheme, if set.
 	 *
+	 * The admin color scheme is checked for validity. If the color scheme does
+	 * not currently exist, then the color scheme is not overridden.
+	 *
 	 * @since 1.0
 	 *
 	 * @param  string $admin_color_scheme The admin color scheme.
 	 * @return string
 	 */
 	public static function force_admin_color( $admin_color_scheme ) {
-		// If a forced admin color has been configured, use it.
+		// If a forced admin color has been configured and it is valid, use it.
 		if ( $forced = self::get_forced_admin_color() ) {
 			$admin_color_scheme = $forced;
 		}
