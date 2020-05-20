@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add filter `c2c_force_admin_color_scheme` to set or override admin color scheme
 * New: Add support for constant to set admin color scheme, `C2C_FORCE_ADMIN_COLOR_SCHEME`
     * New: Add `is_constant_set()` to determine if constant was used to set the forced admin color scheme
     * New: Show message to users who can force an admin color scheme when the forced admin color scheme was set via the constant

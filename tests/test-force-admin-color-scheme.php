@@ -112,6 +112,27 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * filter: c2c_force_admin_color_scheme
+	 */
+
+	public function test_filter_c2c_force_admin_color_scheme() {
+		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'midnight'; } );
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+
+		$this->assertEquals( 'midnight', c2c_ForceAdminColorScheme::get_forced_admin_color() );
+	}
+
+	public function test_filter_c2c_force_admin_color_scheme_that_returns_empty_string() {
+		$this->create_user( 'editor' );
+
+		add_filter( 'c2c_force_admin_color_scheme', '__return_empty_string' );
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+
+		$this->assertEmpty( c2c_ForceAdminColorScheme::get_forced_admin_color() );
+		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
+	}
+
+	/*
 	 * set_forced_admin_color()
 	 */
 
