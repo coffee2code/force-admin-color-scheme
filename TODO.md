@@ -6,5 +6,6 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 
 * Validate the color scheme that is configured (in the event a color scheme is no longer available, ignore it and show notice to admin user).
 * Record and report (to other admins) the name (and possibly datetime) of the user who forced the admin color scheme.
+* Add custom capability for being able to restrict users who can set a forced admin color scheme.
 
 Feel free to make your own suggestions or champion for something already on the list (via the [plugin's support forum on WordPress.org](https://wordpress.org/support/plugin/force-admin-color-scheme/) or on [GitHub](https://github.com/coffee2code/force-admin-color-scheme/) as an issue or PR).
