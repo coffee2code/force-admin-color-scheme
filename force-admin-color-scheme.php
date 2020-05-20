@@ -326,9 +326,9 @@ class c2c_ForceAdminColorScheme {
 			checked( ! empty( $forced_admin_color ), true, false ),
 			__( 'Force this admin color scheme on all users?', 'force-admin-color-scheme' ),
 			(
-				$forced_admin_color ?
-					'<em>' . sprintf( __( 'Currently forced admin color scheme: %s', 'force-admin-color-scheme' ), '<strong>' . ucfirst( $forced_admin_color ) . '</strong>' ) . '</em>' :
-					''
+				$forced_admin_color
+					? '<em>' . sprintf( __( 'Currently forced admin color scheme: %s', 'force-admin-color-scheme' ), '<strong>' . ucfirst( $forced_admin_color ) . '</strong>' ) . '</em>'
+					: ''
 			)
 		);
 
@@ -375,9 +375,9 @@ class c2c_ForceAdminColorScheme {
 		if ( current_user_can( 'manage_options' ) && ! self::is_constant_set() ) {
 			// Unset the forced admin color if the checkbox is unchecked or no color was
 			// specified.
-			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] ) ?
-				'' :
-				$_POST['admin_color'];
+			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] )
+				? ''
+				: $_POST['admin_color'];
 			self::set_forced_admin_color( $new_color );
 		}
 	}
