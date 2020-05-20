@@ -13,6 +13,7 @@
 * Unit tests:
     * New: Add tests for `add_checkbox()`, `force_admin_color()`, `hide_admin_color_input()`, `output_css()`, `register_css()`, `save_setting()`, `set_forced_admin_color()`
     * Change: Remove commented out code
+* New: Add screenshots for messages indicating use of constant or filter
 
 ## 1.2.1 _(2020-01-02)_
 * Change: Note compatibility through WP 5.3+

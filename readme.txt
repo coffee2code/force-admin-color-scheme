@@ -36,7 +36,10 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/force-admin-color-sc
 
 == Screenshots ==
 
-1. A screenshot of the profile page for an administrative user who has the checkbox to force an admin color scheme on users.
+1. A screenshot of the profile page for an administrative user who has the checkbox to force an admin color scheme on users, though one hasn't been forced yet.
+2. A screenshot of the profile page for an administrative user who has the checkbox to force an admin color scheme on users, with a color scheme having been forced.
+3. A screenshot of the profile page for an administrative user when the forced admin color scheme is configured via the filter.
+4. A screenshot of the profile page for an administrative user when the forced admin color scheme is configured via the constant.
 
 
 == Frequently Asked Questions ==
