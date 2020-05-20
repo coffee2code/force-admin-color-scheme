@@ -183,6 +183,13 @@ class c2c_ForceAdminColorScheme {
 
 		// If constant not defined or invalid, then filter current valie.
 		if ( ! $color_scheme ) {
+			/**
+			 * Filters the forced admin color scheme.
+			 *
+			 * @since 1.3
+			 *
+			 * @param string $color_scheme The currently configured forced admin color scheme.
+			 */
 			$color_scheme = apply_filters( 'c2c_force_admin_color_scheme', get_option( self::get_setting_name() ) );
 			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
 				$color_scheme = '';
