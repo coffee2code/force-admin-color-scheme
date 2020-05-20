@@ -234,6 +234,9 @@ class c2c_ForceAdminColorScheme {
 	/**
 	 * Determines if the given admin color scheme exists.
 	 *
+	 * Note: This only returns a valid determination in the admin area and only
+	 * when not running a '-src' version of WordPress.
+	 *
 	 * @since 1.3
 	 *
 	 * @return bool True if the color scheme exists, false otherwise.
