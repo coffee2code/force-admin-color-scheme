@@ -189,6 +189,19 @@ class c2c_ForceAdminColorScheme {
 	}
 
 	/**
+	 * Determines if the given admin color scheme exists.
+	 *
+	 * @since 1.3
+	 *
+	 * @return bool True if the color scheme exists, false otherwise.
+	 */
+	public static function is_valid_admin_color_scheme( $color_scheme ) {
+		global $_wp_admin_css_colors;
+
+		return isset( $_wp_admin_css_colors[ $color_scheme ] );
+	}
+
+	/**
 	 * Overrides the user's admin color scheme with the forced admin color
 	 * scheme, if set.
 	 *

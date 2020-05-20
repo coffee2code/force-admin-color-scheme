@@ -14,6 +14,11 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 		// Re-fire init handler as admin_init action would've done.
 		c2c_ForceAdminColorScheme::do_init();
+
+		// Fool WP into not realizing it is running a -src version so it
+		// registers all default admin color schemes.
+		$GLOBALS['wp_version'] = str_replace( '-src', '', $GLOBALS['wp_version'] );
+		register_admin_color_schemes();
 	}
 
 	public function tearDown() {
@@ -154,6 +159,20 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_admin_color( '' ) );
 		$this->assertEmpty( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
+	}
+
+	/*
+	 * is_valid_admin_color_scheme()
+	 */
+
+	public function test_is_valid_admin_color_scheme_with_valid_color_schemes() {
+		$this->assertTrue( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'ocean' ) );
+		$this->assertTrue( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'coffee' ) );
+	}
+
+	public function test_is_valid_admin_color_scheme_with_invalid_color_schemes() {
+		$this->assertFalse( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'phony' ) );
+		$this->assertFalse( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'fake' ) );
 	}
 
 	/*
