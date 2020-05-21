@@ -17,12 +17,13 @@
 * Change: Rename `get_forced_admin_color()` to `get_forced_color_scheme()`
 * Change: Rename `set_forced_admin_color()` to `set_forced_color_scheme()`
 * Change: Rename `force_admin_color()` to `force_color_scheme()`
+* Change: Rename `hide_admin_color_input()` to `hide_admin_color_scheme_picker()`
 * Change: Tweak attribute spacing for `label` tag
 * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
 * Unit tests:
-    * New: Add tests for `add_checkbox()`, `force_admin_color()`, `hide_admin_color_input()`, `output_css()`, `register_css()`, `save_setting()`, `set_forced_color_scheme()`
+    * New: Add tests for `add_checkbox()`, `force_admin_color()`, `hide_admin_color_scheme_picker()`, `output_css()`, `register_css()`, `save_setting()`, `set_forced_color_scheme()`
     * Change: Remove commented out code
 * New: Add screenshots for messages indicating use of constant or filter
 

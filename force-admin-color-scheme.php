@@ -118,7 +118,7 @@ class c2c_ForceAdminColorScheme {
 		add_action( 'personal_options_update',     array( __CLASS__, 'save_setting'                ) );
 
 		// Hide the Admin Color Scheme field from users who can't set a forced color scheme.
-		add_action( 'admin_color_scheme_picker',   array( __CLASS__, 'hide_admin_color_input'      ), 8 );
+		add_action( 'admin_color_scheme_picker',   array( __CLASS__, 'hide_admin_color_scheme_picker' ), 8 );
 
 		// Output CSS.
 		add_action( 'load-profile.php',            array( __CLASS__, 'register_css'                ) );
@@ -437,8 +437,9 @@ class c2c_ForceAdminColorScheme {
 	 * scheme is chosen).
 	 *
 	 * @since 1.1
+	 * @since 1.3 Renamed from `hide_admin_color_input()`.
 	 */
-	public static function hide_admin_color_input() {
+	public static function hide_admin_color_scheme_picker() {
 		if ( ! current_user_can( 'manage_options' ) && self::get_forced_color_scheme() ) {
 			remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 		}
