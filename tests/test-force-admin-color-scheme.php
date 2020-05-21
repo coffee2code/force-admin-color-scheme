@@ -235,6 +235,58 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
+	 * get_filtered_color_scheme()
+	 */
+
+	public function test_get_filtered_color_scheme() {
+		$this->assertEmpty( c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	public function test_get_filtered_color_scheme_with_forced_color_scheme() {
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+
+		$this->assertEmpty( c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	public function test_get_filtered_color_scheme_that_is_filtered() {
+		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'midnight'; } );
+
+		$this->assertEquals( 'midnight', c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	public function test_get_filtered_color_scheme_that_is_filtered_with_forced_color_scheme_that_is_returned() {
+		add_filter( 'c2c_force_admin_color_scheme', function ( $x, $color ) { return $color; }, 10, 2 );
+		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+
+		$this->assertEquals( 'ocean', c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	public function test_get_filtered_color_scheme_that_is_filtered_but_mixed_case() {
+		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'Midnight'; } );
+
+		$this->assertEquals( 'midnight', c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	public function test_get_filtered_color_scheme_that_is_filtered_but_empty_string() {
+		add_filter( 'c2c_force_admin_color_scheme', '__return_empty_string' );
+
+		$this->assertEmpty( c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	public function test_get_filtered_color_scheme_that_is_filtered_but_invalid_return_type() {
+		add_filter( 'c2c_force_admin_color_scheme', '__return_empty_array' );
+
+		$this->assertEquals( '', c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	public function test_get_filtered_color_scheme_that_is_filtered_but_bogus_color_scheme() {
+		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'bogus'; } );
+
+		// The function does not validate the returned filtered value.
+		$this->assertEquals( 'bogus', c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
+	}
+
+	/*
 	 * is_valid_admin_color_scheme()
 	 */
 

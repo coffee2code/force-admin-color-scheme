@@ -183,17 +183,7 @@ class c2c_ForceAdminColorScheme {
 
 		// If constant not defined or invalid, then filter current valie.
 		if ( ! $color_scheme ) {
-			/**
-			 * Filters the forced admin color scheme.
-			 *
-			 * If an empty string is returned, then it's as if the filter had
-			 * not been hooked.
-			 *
-			 * @since 1.3
-			 *
-			 * @param string $color_scheme The currently configured forced admin color scheme.
-			 */
-			$color_scheme = strtolower( apply_filters( 'c2c_force_admin_color_scheme', get_option( self::get_setting_name() ) ) );
+			$color_scheme = self::get_filtered_color_scheme();
 			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
 				$color_scheme = '';
 			}
@@ -234,6 +224,35 @@ class c2c_ForceAdminColorScheme {
 		}
 
 		return $color_scheme;
+	}
+
+	/**
+	 * Returns the filtered admin color scheme.
+	 *
+	 * Note: Does not validate whether the returned filter value corresponds to
+	 * an actual admin color scheme.
+	 *
+	 * @since 1.3
+	 *
+	 * @return string The filtered admin color scheme. A blank string indicates
+	 *                that no filtering took place. The color scheme is not
+	 *                verified as being a legitimate admin color scheme.
+	 */
+	public static function get_filtered_color_scheme() {
+		/**
+		 * Filters the forced admin color scheme.
+		 *
+		 * If an empty string is returned, then it's as if the filter had
+		 * not been hooked.
+		 *
+		 * @since 1.3
+		 *
+		 * @param string $new_color_scheme Empty string.
+		 * @param string $cur_color_scheme The currently configured forced admin color scheme.
+		 */
+		$filtered_color_scheme = apply_filters( 'c2c_force_admin_color_scheme', '', get_option( self::get_setting_name(), '' ) );
+
+		return is_string( $filtered_color_scheme ) ? strtolower( $filtered_color_scheme ) : '';
 	}
 
 	/**
@@ -284,6 +303,8 @@ class c2c_ForceAdminColorScheme {
 		}
 
 		$forced_admin_color = self::get_forced_admin_color();
+		$filtered_color_scheme = self::get_filtered_color_scheme();
+
 		$setting = self::get_setting_name();
 
 		// Output a message to admin user indicating the constant is being used.
@@ -303,24 +324,19 @@ class c2c_ForceAdminColorScheme {
 		}
 
 		// Output a message to admin user indicating the filter is being used.
-		$filtered_color_scheme = '';
-		if ( has_filter( 'c2c_force_admin_color_scheme' ) ) {
-			$filtered_color_scheme = strtolower( apply_filters( 'c2c_force_admin_color_scheme', get_option( self::get_setting_name() ) ) );
+		if ( $filtered_color_scheme && $forced_admin_color === $filtered_color_scheme ) {
+			printf(
+				'<em class="%s notice notice-info">%s</em>',
+				esc_attr( $setting ),
+				sprintf(
+					/* translator: 1: name of filter, 2: name of forced admin color scheme */
+					__( 'Currently forced admin color scheme (via the filter %1$s, and thus cannot be changed above): %2$s', 'force-admin-color-scheme' ),
+					'<strong><code>c2c_force_admin_color_scheme</code></strong>',
+					'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
+				)
+			);
 
-			if ( $filtered_color_scheme && $forced_admin_color === $filtered_color_scheme ) {
-				printf(
-					'<em class="%s notice notice-info">%s</em>',
-					esc_attr( $setting ),
-					sprintf(
-						/* translator: 1: name of filter, 2: name of forced admin color scheme */
-						__( 'Currently forced admin color scheme (via the filter %1$s, and thus cannot be changed above): %2$s', 'force-admin-color-scheme' ),
-						'<strong><code>c2c_force_admin_color_scheme</code></strong>',
-						'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
-					)
-				);
-
-				return;
-			}
+			return;
 		}
 
 		printf(
