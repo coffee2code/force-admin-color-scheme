@@ -87,7 +87,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	public function test_registers_hooks() {
-		$this->assertEquals( 10, has_filter( 'get_user_option_admin_color', array( 'c2c_ForceAdminColorScheme', 'force_admin_color'           ) ) );
+		$this->assertEquals( 10, has_filter( 'get_user_option_admin_color', array( 'c2c_ForceAdminColorScheme', 'force_color_scheme'          ) ) );
 		$this->assertEquals( 20, has_action( 'admin_color_scheme_picker',   array( 'c2c_ForceAdminColorScheme', 'add_checkbox'                ) ) );
 		$this->assertEquals( 10, has_action( 'personal_options_update',     array( 'c2c_ForceAdminColorScheme', 'save_setting'                ) ) );
 		$this->assertEquals( 8,  has_action( 'admin_color_scheme_picker',   array( 'c2c_ForceAdminColorScheme', 'hide_admin_color_input'      ), 8 ) );
@@ -309,17 +309,17 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
-	 * force_admin_color()
+	 * force_color_scheme()
 	 */
 
 	public function test_force_admin_color_returns_passed_in_color_if_forced_color_not_set() {
-		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::force_admin_color( 'coffee' ) );
+		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::force_color_scheme( 'coffee' ) );
 	}
 
 	public function test_force_admin_color_returns_forced_color_if_set() {
 		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'sunrise' );
 
-		$this->assertEquals( 'sunrise', c2c_ForceAdminColorScheme::force_admin_color( 'coffee' ) );
+		$this->assertEquals( 'sunrise', c2c_ForceAdminColorScheme::force_color_scheme( 'coffee' ) );
 	}
 
 	/*

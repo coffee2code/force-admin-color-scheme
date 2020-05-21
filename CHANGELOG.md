@@ -16,6 +16,7 @@
 * Change: Ensure admin color scheme name is lowercased before validation, saving, and comparisons
 * Change: Rename `get_forced_admin_color()` to `get_forced_color_scheme()`
 * Change: Rename `set_forced_admin_color()` to `set_forced_color_scheme()`
+* Change: Rename `force_admin_color()` to `force_color_scheme()`
 * Change: Tweak attribute spacing for `label` tag
 * Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
 * Change: Note compatibility through WP 5.4+

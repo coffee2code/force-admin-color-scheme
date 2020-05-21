@@ -109,7 +109,7 @@ class c2c_ForceAdminColorScheme {
 		 */
 
 		// Override the user's admin color scheme.
-		add_filter( 'get_user_option_admin_color', array( __CLASS__, 'force_admin_color'           ) );
+		add_filter( 'get_user_option_admin_color', array( __CLASS__, 'force_color_scheme'          ) );
 
 		// Add checked for setting the forced admin color scheme.
 		add_action( 'admin_color_scheme_picker',   array( __CLASS__, 'add_checkbox'                ), 20 );
@@ -295,11 +295,12 @@ class c2c_ForceAdminColorScheme {
 	 * not currently exist, then the color scheme is not overridden.
 	 *
 	 * @since 1.0
+	 * @since 1.3 Rename from `force_admin_color()`.
 	 *
 	 * @param  string $admin_color_scheme The admin color scheme.
 	 * @return string
 	 */
-	public static function force_admin_color( $admin_color_scheme ) {
+	public static function force_color_scheme( $admin_color_scheme ) {
 		// If a forced admin color has been configured and it is valid, use it.
 		if ( $forced = self::get_forced_color_scheme() ) {
 			$admin_color_scheme = $forced;
