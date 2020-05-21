@@ -166,12 +166,12 @@ class c2c_ForceAdminColorScheme {
 	 * not returned.
 	 *
 	 * @since 1.1
-	 * @since 1.3 Added support for constant and filter.
+	 * @since 1.3 Added support for constant and filter. Renamed from `get_forced_color_scheme()`.
 	 *
 	 * @return string The admin color scheme or empty string if color scheme was
 	 *                not set or is currently invalid.
 	 */
-	public static function get_forced_admin_color() {
+	public static function get_forced_color_scheme() {
 		// Constant takes precedence.
 		$color_scheme = self::get_color_scheme_via_constant();
 		if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
@@ -300,7 +300,7 @@ class c2c_ForceAdminColorScheme {
 	 */
 	public static function force_admin_color( $admin_color_scheme ) {
 		// If a forced admin color has been configured and it is valid, use it.
-		if ( $forced = self::get_forced_admin_color() ) {
+		if ( $forced = self::get_forced_color_scheme() ) {
 			$admin_color_scheme = $forced;
 		}
 
@@ -317,7 +317,7 @@ class c2c_ForceAdminColorScheme {
 			return;
 		}
 
-		$forced_admin_color = self::get_forced_admin_color();
+		$forced_admin_color = self::get_forced_color_scheme();
 		$constant_color_scheme = self::get_color_scheme_via_constant();
 		$filtered_color_scheme = self::get_filtered_color_scheme();
 
@@ -437,7 +437,7 @@ class c2c_ForceAdminColorScheme {
 	 * @since 1.1
 	 */
 	public static function hide_admin_color_input() {
-		if ( ! current_user_can( 'manage_options' ) && self::get_forced_admin_color() ) {
+		if ( ! current_user_can( 'manage_options' ) && self::get_forced_color_scheme() ) {
 			remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 		}
 	}
@@ -465,7 +465,7 @@ class c2c_ForceAdminColorScheme {
 			$css = "label[for=\"{$class}\"], .{$class} { display: block; padding-left: 15px; margin-top: 10px; }";
 		}
 		// Non-admins need CSS to hide admin color label if a color is being forced.
-		elseif ( self::get_forced_admin_color() ) {
+		elseif ( self::get_forced_color_scheme() ) {
 			$css = '.user-admin-color-wrap { display: none; }';
 		}
 
