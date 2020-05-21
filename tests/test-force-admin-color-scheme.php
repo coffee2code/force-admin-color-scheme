@@ -128,14 +128,14 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 	public function test_filter_c2c_force_admin_color_scheme() {
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'midnight'; } );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->assertEquals( 'midnight', c2c_ForceAdminColorScheme::get_forced_color_scheme() );
 	}
 
 	public function test_filter_c2c_force_admin_color_scheme_that_returns_mixed_case() {
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'Midnight'; } );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->assertEquals( 'midnight', c2c_ForceAdminColorScheme::get_forced_color_scheme() );
 	}
@@ -153,7 +153,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'editor' );
 
 		add_filter( 'c2c_force_admin_color_scheme', '__return_empty_string' );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->assertEquals( 'ocean', c2c_ForceAdminColorScheme::get_forced_color_scheme() );
 		$this->assertEquals( 'ocean', get_user_option( 'admin_color' ) );
@@ -172,64 +172,64 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'editor' );
 
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'bogus'; } );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->assertEquals( 'ocean', c2c_ForceAdminColorScheme::get_forced_color_scheme() );
 		$this->assertEquals( 'ocean', get_user_option( 'admin_color' ) );
 	}
 
 	/*
-	 * set_forced_admin_color()
+	 * set_forced_color_scheme()
 	 */
 
-	public function test_set_forced_admin_color_saves_color_to_option() {
+	public function test_set_forced_color_scheme_saves_color_to_option() {
 		$color = 'coffee';
 		$this->create_user( 'editor' );
 
 		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 
-		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_admin_color( $color ) );
+		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_color_scheme( $color ) );
 		$this->assertEquals( $color, get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 	}
 
-	public function test_set_forced_admin_color_unsets_option_if_blank_is_sent() {
+	public function test_set_forced_color_scheme_unsets_option_if_blank_is_sent() {
 		$this->create_user( 'editor' );
 
 		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 
-		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_admin_color( '' ) );
+		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_color_scheme( '' ) );
 		$this->assertEmpty( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 	}
 
-	public function test_set_forced_admin_color_saves_color_to_option_when_mixed_case() {
+	public function test_set_forced_color_scheme_saves_color_to_option_when_mixed_case() {
 		$color = 'coffee';
 		$this->create_user( 'editor' );
 
 		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 
-		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_admin_color( ucfirst( $color ) ) );
+		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_color_scheme( ucfirst( $color ) ) );
 		$this->assertEquals( $color, get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 	}
 
-	public function test_set_forced_admin_color_does_not_save_invalid_color_to_option() {
+	public function test_set_forced_color_scheme_does_not_save_invalid_color_to_option() {
 		$color = 'bogus';
 		$this->create_user( 'editor' );
 
 		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 
-		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_admin_color( $color ) );
+		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_color_scheme( $color ) );
 		$this->assertEmpty( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 		$this->assertEmpty( c2c_ForceAdminColorScheme::get_forced_color_scheme() );
 	}
 
-	public function test_set_forced_admin_color_does_not_overwrite_existing_forced_color_scheme_with_invalid_color_scheme() {
+	public function test_set_forced_color_scheme_does_not_overwrite_existing_forced_color_scheme_with_invalid_color_scheme() {
 		$color = 'coffee';
 		$this->create_user( 'editor' );
 
-		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_admin_color( $color ) );
+		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_color_scheme( $color ) );
 
-		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_admin_color( 'bogus' ) );
+		$this->assertEmpty( c2c_ForceAdminColorScheme::set_forced_color_scheme( 'bogus' ) );
 		$this->assertEquals( $color, get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 		$this->assertEquals( $color, c2c_ForceAdminColorScheme::get_forced_color_scheme() );
 	}
@@ -243,7 +243,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	public function test_get_filtered_color_scheme_with_forced_color_scheme() {
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->assertEmpty( c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
 	}
@@ -256,7 +256,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 	public function test_get_filtered_color_scheme_that_is_filtered_with_forced_color_scheme_that_is_returned() {
 		add_filter( 'c2c_force_admin_color_scheme', function ( $x, $color ) { return $color; }, 10, 2 );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->assertEquals( 'ocean', c2c_ForceAdminColorScheme::get_filtered_color_scheme() );
 	}
@@ -317,7 +317,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	public function test_force_admin_color_returns_forced_color_if_set() {
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'sunrise' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'sunrise' );
 
 		$this->assertEquals( 'sunrise', c2c_ForceAdminColorScheme::force_admin_color( 'coffee' ) );
 	}
@@ -343,7 +343,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	public function test_add_checkbox_outputs_for_user_with_cap_when_forced_color_set() {
 		$this->create_user( 'administrator' );
 
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" checked=\'checked\' /> '
 			. 'Force this admin color scheme on all users?'
 			. '</label>'
@@ -357,7 +357,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'midnight'; } );
 
 		$expected = '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme (via the filter <strong><code>c2c_force_admin_color_scheme</code></strong>, and thus cannot be changed above): <strong>Midnight</strong></em>';
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
 	}
@@ -385,7 +385,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'administrator' );
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'bogus'; } );
 
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" checked=\'checked\' /> '
 			. 'Force this admin color scheme on all users?'
 			. '</label>'
@@ -432,7 +432,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 			'c2c_forced_admin_color' => '0',
 		);
 
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'coffee' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'coffee' );
 		c2c_ForceAdminColorScheme::save_setting( $user_id );
 
 		// The test hasn't actually saved a new color to the user's option
@@ -456,7 +456,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 	public function test_hide_admin_color_input_does_not_hide_picker_for_user_with_cap_when_color_is_set() {
 		$this->create_user( 'administrator' );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'coffee' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'coffee' );
 
 		c2c_ForceAdminColorScheme::hide_admin_color_input();
 
@@ -473,7 +473,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 	public function test_hide_admin_color_input_hides_picker_for_user_without_cap_when_color_is_set() {
 		$this->create_user( 'editor' );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'coffee' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'coffee' );
 
 		c2c_ForceAdminColorScheme::hide_admin_color_input();
 
@@ -508,7 +508,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 	public function test_output_css_for_user_without_cap_and_forced_color_is_set() {
 		$this->create_user( 'editor' );
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 		$expected = '.user-admin-color-wrap { display: none; }'
 			. "\n" . '.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }';
 
@@ -528,7 +528,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	public function test_uninstall_deletes_option() {
 		$option = c2c_ForceAdminColorScheme::get_setting_name();
 
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->assertEquals( 'ocean', get_option( $option ) );
 
@@ -549,7 +549,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 		$this->assertEquals( 'fresh', get_user_option( 'admin_color' ) );
 
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 		define( 'C2C_FORCE_ADMIN_COLOR_SCHEME', 'coffee' );
 
 		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::get_forced_color_scheme() );
@@ -568,12 +568,12 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'administrator' );
 
 		$expected = '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme (via the constant <strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>, and thus cannot be changed above): <strong>Coffee</strong></em>';
-		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
 	}
 
-	public function test_set_forced_admin_color_saves_color_to_option_even_if_constant_set() {
+	public function test_set_forced_color_scheme_saves_color_to_option_even_if_constant_set() {
 		$color = 'sunrise';
 		$expected = 'coffee';
 
@@ -581,7 +581,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 		$this->assertEquals( $expected, get_user_option( 'admin_color' ) );
 
-		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_admin_color( $color ) );
+		$this->assertEquals( $color, c2c_ForceAdminColorScheme::set_forced_color_scheme( $color ) );
 		$this->assertEquals( $color, get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
 		$this->assertEquals( $expected, get_user_option( 'admin_color' ) );
 	}

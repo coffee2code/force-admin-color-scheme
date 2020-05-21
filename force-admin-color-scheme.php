@@ -204,12 +204,13 @@ class c2c_ForceAdminColorScheme {
 	 * NOTE: Does not prevent setting admin color when constant is in use.
 	 *
 	 * @since 1.1
+	 * @since 1.3 Renamed from `set_forced_color_scheme()`.
 	 *
 	 * @param  string $color_scheme The color scheme name.
 	 * @return string The admin color scheme or empty string if color scheme was
 	 *                invalid and thus not saved.
 	 */
-	public static function set_forced_admin_color( $color_scheme ) {
+	public static function set_forced_color_scheme( $color_scheme ) {
 		$color_scheme = strtolower( $color_scheme );
 
 		if ( ! $color_scheme ) {
@@ -422,7 +423,7 @@ class c2c_ForceAdminColorScheme {
 			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] )
 				? ''
 				: $_POST['admin_color'];
-			self::set_forced_admin_color( $new_color );
+			self::set_forced_color_scheme( $new_color );
 		}
 	}
 
