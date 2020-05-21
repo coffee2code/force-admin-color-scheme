@@ -157,15 +157,16 @@ class c2c_ForceAdminColorScheme {
 	 *
 	 * Forced admin color scheme is determined in this order:
 	 * - The value of the constant `C2C_FORCE_ADMIN_COLOR_SCHEME`, if set and valid.
-	 * - The return value of the filter `c2c_force_admin_color_scheme`, if valid.
+	 * - The return value of the filter `c2c_force_admin_color_scheme`, if set and valid.
 	 * - The configured value previously saved by the plugin, if still valid.
 	 * - An empty string to indicate no admin color scheme is being forced.
 	 *
-	 * The admin color scheme is checked for validity. If the color scheme does
-	 * not currently exist, then the color scheme is not returned.
+	 * The admin color scheme is checked for validity. If the color scheme is
+	 * not valid (e.g. it does not currently exist), then the color scheme is
+	 * not returned.
 	 *
 	 * @since 1.1
-	 * @since 1.3 Added support for constant C2C_FORCE_ADMIN_COLOR_SCHEME.
+	 * @since 1.3 Added support for constant and filter.
 	 *
 	 * @return string The admin color scheme or empty string if color scheme was
 	 *                not set or is currently invalid.
