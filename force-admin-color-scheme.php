@@ -319,18 +319,25 @@ class c2c_ForceAdminColorScheme {
 		}
 
 		printf(
-			'<label for="%s"><input name="%s" type="checkbox" id="%s" value="true"%s /> %s %s</label>',
+			'<label for="%s"><input name="%s" type="checkbox" id="%s" value="true"%s /> %s</label>',
 			esc_attr( $setting ),
 			esc_attr( $setting ),
 			esc_attr( $setting ),
 			checked( ! empty( $forced_admin_color ), true, false ),
-			__( 'Force this admin color scheme on all users?', 'force-admin-color-scheme' ),
-			(
-				$forced_admin_color
-					? '<em>' . sprintf( __( 'Currently forced admin color scheme: %s', 'force-admin-color-scheme' ), '<strong>' . ucfirst( $forced_admin_color ) . '</strong>' ) . '</em>'
-					: ''
-			)
+			__( 'Force this admin color scheme on all users?', 'force-admin-color-scheme' )
 		);
+
+		// Output notice about currently forced admin color scheme.
+		if ( $forced_admin_color ) {
+			printf(
+				'<em class="%s notice notice-info">%s</em>',
+				esc_attr( $setting ),
+				sprintf(
+					__( 'Currently forced admin color scheme: %s', 'force-admin-color-scheme' ),
+					'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
+				)
+			);
+		}
 
 		// Output notice if constant was defined but with an invalid admin color scheme.
 		if ( self::is_constant_set() && $forced_admin_color !== C2C_FORCE_ADMIN_COLOR_SCHEME ) {

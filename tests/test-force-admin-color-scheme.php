@@ -258,7 +258,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	public function test_add_checkbox_outputs_for_user_with_cap_when_forced_color_not_set() {
 		$this->create_user( 'administrator' );
 
-		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" /> Force this admin color scheme on all users? </label>';
+		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" /> Force this admin color scheme on all users?</label>';
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
 	}
@@ -268,9 +268,9 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
 		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" checked=\'checked\' /> '
-			. 'Force this admin color scheme on all users? '
-			. '<em>Currently forced admin color scheme: <strong>Ocean</strong></em>'
-			. '</label>';
+			. 'Force this admin color scheme on all users?'
+			. '</label>'
+			. '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme: <strong>Ocean</strong></em>';
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
 	}
@@ -289,7 +289,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'administrator' );
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'bogus'; } );
 
-		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" /> Force this admin color scheme on all users? </label>';
+		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" /> Force this admin color scheme on all users?</label>';
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
 	}
@@ -300,9 +300,9 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 		c2c_ForceAdminColorScheme::set_forced_admin_color( 'ocean' );
 		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" checked=\'checked\' /> '
-			. 'Force this admin color scheme on all users? '
-			. '<em>Currently forced admin color scheme: <strong>Ocean</strong></em>'
+			. 'Force this admin color scheme on all users?'
 			. '</label>'
+			. '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme: <strong>Ocean</strong></em>'
 			. '<em class="c2c_forced_admin_color notice notice-warning"><strong>Notice:</strong> The filter <strong><code>c2c_force_admin_color_scheme</code></strong> is hooked and returns an invalid color scheme (<strong>bogus</strong>) and is being ignored.</em>';
 
 			$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
