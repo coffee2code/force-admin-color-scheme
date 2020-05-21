@@ -171,14 +171,10 @@ class c2c_ForceAdminColorScheme {
 	 *                not set or is currently invalid.
 	 */
 	public static function get_forced_admin_color() {
-		$color_scheme = '';
-
 		// Constant takes precedence.
-		if ( self::is_constant_set() ) {
-			$color_scheme = strtolower( C2C_FORCE_ADMIN_COLOR_SCHEME );
-			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
-				$color_scheme = '';
-			}
+		$color_scheme = self::get_color_scheme_via_constant();
+		if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+			$color_scheme = '';
 		}
 
 		// If constant not defined or invalid, then filter current valie.
@@ -256,6 +252,24 @@ class c2c_ForceAdminColorScheme {
 	}
 
 	/**
+	 * Returns the admin color scheme as set via constant.
+	 *
+	 * Note: Does not validate whether the value corresponds to a legitimate
+	 * admin color scheme.
+	 *
+	 * @since 1.3
+	 *
+	 * @return string The admin color scheme. A blank string indicates
+	 *                that no color scheme was defined. The color scheme is not
+	 *                verified as being a legitimate admin color scheme.
+	 */
+	public static function get_color_scheme_via_constant() {
+		$color_scheme = self::is_constant_set() ? C2C_FORCE_ADMIN_COLOR_SCHEME : '';
+
+		return is_string( $color_scheme ) ? strtolower( $color_scheme ) : '';
+	}
+
+	/**
 	 * Determines if the given admin color scheme exists.
 	 *
 	 * Note: This only returns a valid determination in the admin area and only
@@ -303,12 +317,13 @@ class c2c_ForceAdminColorScheme {
 		}
 
 		$forced_admin_color = self::get_forced_admin_color();
+		$constant_color_scheme = self::get_color_scheme_via_constant();
 		$filtered_color_scheme = self::get_filtered_color_scheme();
 
 		$setting = self::get_setting_name();
 
 		// Output a message to admin user indicating the constant is being used.
-		if ( self::is_constant_set() && $forced_admin_color === strtolower( C2C_FORCE_ADMIN_COLOR_SCHEME ) ) {
+		if ( $constant_color_scheme && $forced_admin_color === $constant_color_scheme ) {
 			printf(
 				'<em class="%s notice notice-info">%s</em>',
 				esc_attr( $setting ),
@@ -361,7 +376,7 @@ class c2c_ForceAdminColorScheme {
 		}
 
 		// Output notice if constant was defined but with an invalid admin color scheme.
-		if ( self::is_constant_set() && $forced_admin_color !== C2C_FORCE_ADMIN_COLOR_SCHEME ) {
+		if ( $constant_color_scheme && $forced_admin_color !== $constant_color_scheme ) {
 			printf(
 				'<em class="%s notice notice-warning">%s</em>',
 				esc_attr( $setting ),
@@ -369,7 +384,7 @@ class c2c_ForceAdminColorScheme {
 					/* translator: 1: name of constant, 2: name of forced admin color scheme */
 					__( '<strong>Notice:</strong> The constant %1$s is defined with an invalid color scheme (%2$s) and is being ignored.', 'force-admin-color-scheme' ),
 					'<strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>',
-					'<strong>' . esc_html( strtolower( C2C_FORCE_ADMIN_COLOR_SCHEME ) ) . '</strong>'
+					'<strong>' . esc_html( $constant_color_scheme ) . '</strong>'
 				)
 			);
 		}
