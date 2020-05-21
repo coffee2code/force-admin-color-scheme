@@ -285,6 +285,16 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
 	}
 
+	public function test_add_checkbox_does_not_output_message_for_user_with_cap_when_filter_returns_empty_string() {
+		$this->create_user( 'administrator' );
+
+		add_filter( 'c2c_force_admin_color_scheme', '__return_empty_string' );
+
+		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" /> Force this admin color scheme on all users?</label>';
+
+		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
+	}
+
 	public function test_add_checkbox_outputs_message_for_user_with_cap_when_filter_returns_invalid_color_scheme_and_no_existing_forced_color_set() {
 		$this->create_user( 'administrator' );
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'bogus'; } );

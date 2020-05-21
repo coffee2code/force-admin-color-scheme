@@ -186,6 +186,9 @@ class c2c_ForceAdminColorScheme {
 			/**
 			 * Filters the forced admin color scheme.
 			 *
+			 * If an empty string is returned, then it's as if the filter had
+			 * not been hooked.
+			 *
 			 * @since 1.3
 			 *
 			 * @param string $color_scheme The currently configured forced admin color scheme.
@@ -302,7 +305,7 @@ class c2c_ForceAdminColorScheme {
 		if ( has_filter( 'c2c_force_admin_color_scheme' ) ) {
 			$filtered_color_scheme = apply_filters( 'c2c_force_admin_color_scheme', get_option( self::get_setting_name() ) );
 
-			if ( $forced_admin_color === $filtered_color_scheme ) {
+			if ( $filtered_color_scheme && $forced_admin_color === $filtered_color_scheme ) {
 				printf(
 					'<em class="%s notice notice-info">%s</em>',
 					esc_attr( $setting ),
