@@ -295,17 +295,17 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
-	 * is_valid_admin_color_scheme()
+	 * is_valid_color_scheme()
 	 */
 
-	public function test_is_valid_admin_color_scheme_with_valid_color_schemes() {
-		$this->assertTrue( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'ocean' ) );
-		$this->assertTrue( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'coffee' ) );
+	public function test_is_valid_color_scheme_with_valid_color_schemes() {
+		$this->assertTrue( c2c_ForceAdminColorScheme::is_valid_color_scheme( 'ocean' ) );
+		$this->assertTrue( c2c_ForceAdminColorScheme::is_valid_color_scheme( 'coffee' ) );
 	}
 
-	public function test_is_valid_admin_color_scheme_with_invalid_color_schemes() {
-		$this->assertFalse( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'phony' ) );
-		$this->assertFalse( c2c_ForceAdminColorScheme::is_valid_admin_color_scheme( 'fake' ) );
+	public function test_is_valid_color_scheme_with_invalid_color_schemes() {
+		$this->assertFalse( c2c_ForceAdminColorScheme::is_valid_color_scheme( 'phony' ) );
+		$this->assertFalse( c2c_ForceAdminColorScheme::is_valid_color_scheme( 'fake' ) );
 	}
 
 	/*

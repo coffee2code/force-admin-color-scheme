@@ -8,7 +8,7 @@
     * New: Add `get_color_scheme_via_constant()` to get the admin color scheme specified via the constant
     * New: Show message to users who can force an admin color scheme when the forced admin color scheme was set via the constant
 * New: Verify validity of admin color scheme on save and on retrieval
-    * New: Add `is_valid_admin_color_scheme()` to check if a given admin color scheme is valid
+    * New: Add `is_valid_color_scheme()` to check if a given admin color scheme is valid
     * Change: Modify `get_forced_color_scheme()` to not return an invalid admin color scheme
     * Change: Modify `set_forced_color_scheme()` to not save an invalid admin color scheme
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add to it)

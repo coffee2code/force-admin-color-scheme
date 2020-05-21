@@ -174,14 +174,14 @@ class c2c_ForceAdminColorScheme {
 	public static function get_forced_color_scheme() {
 		// Constant takes precedence.
 		$color_scheme = self::get_color_scheme_via_constant();
-		if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+		if ( ! self::is_valid_color_scheme( $color_scheme ) ) {
 			$color_scheme = '';
 		}
 
 		// If constant not defined or invalid, then filter current valie.
 		if ( ! $color_scheme ) {
 			$color_scheme = self::get_filtered_color_scheme();
-			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+			if ( ! self::is_valid_color_scheme( $color_scheme ) ) {
 				$color_scheme = '';
 			}
 		}
@@ -189,7 +189,7 @@ class c2c_ForceAdminColorScheme {
 		// If filtered value is not defined or invalid, then use current valie.
 		if ( ! $color_scheme ) {
 			$color_scheme = get_option( self::get_setting_name() );
-			if ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+			if ( ! self::is_valid_color_scheme( $color_scheme ) ) {
 				$color_scheme = '';
 			}
 		}
@@ -215,7 +215,7 @@ class c2c_ForceAdminColorScheme {
 
 		if ( ! $color_scheme ) {
 			delete_option( self::get_setting_name() );
-		} elseif ( ! self::is_valid_admin_color_scheme( $color_scheme ) ) {
+		} elseif ( ! self::is_valid_color_scheme( $color_scheme ) ) {
 			$color_scheme = '';
 		} else {
 			update_option( self::get_setting_name(), $color_scheme );
@@ -281,7 +281,7 @@ class c2c_ForceAdminColorScheme {
 	 *
 	 * @return bool True if the color scheme exists, false otherwise.
 	 */
-	public static function is_valid_admin_color_scheme( $color_scheme ) {
+	public static function is_valid_color_scheme( $color_scheme ) {
 		global $_wp_admin_css_colors;
 
 		return isset( $_wp_admin_css_colors[ $color_scheme ] );
