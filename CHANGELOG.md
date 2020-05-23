@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 2.0 _(2020-05-22)_
+
+### Hightlights:
+
+This feature release adds support for programmatically customizing forced admin color scheme via a filter and/or constant, adds stylish inline notices, adds validation for color schemes, expands unit test coverage, renames a number of functions, adds TODO.md, updates compatibility through WP 5.4+, and a few more minor changes.
+
+### Details:
+
 * New: Add filter `c2c_force_admin_color_scheme` to set or override admin color scheme
     * New: Add `get_filtered_color_scheme()` to get the filtered admin color scheme
 * New: Add support for constant to set admin color scheme, `C2C_FORCE_ADMIN_COLOR_SCHEME`

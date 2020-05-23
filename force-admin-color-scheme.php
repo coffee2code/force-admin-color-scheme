@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Force Admin Color Scheme
- * Version:     1.2.1
+ * Version:     2.0
  * Plugin URI:  https://coffee2code.com/wp-plugins/force-admin-color-scheme/
  * Author:      Scott Reilly
  * Author URI:  https://coffee2code.com/
@@ -18,7 +18,7 @@
  *
  * @package Force_Admin_Color_Scheme
  * @author  Scott Reilly
- * @version 1.2.1
+ * @version 2.0
  */
 
 /*
@@ -59,7 +59,7 @@ class c2c_ForceAdminColorScheme {
 	 * @since 1.0
 	 */
 	public static function version() {
-		return '1.2.1';
+		return '2.0';
 	}
 
 	/**
@@ -144,7 +144,7 @@ class c2c_ForceAdminColorScheme {
 	 * Determines if the constant is being used to set a forced admin color
 	 * scheme
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 *
 	 * @return bool True if the constant is being used, else false.
 	 */
@@ -166,7 +166,7 @@ class c2c_ForceAdminColorScheme {
 	 * not returned.
 	 *
 	 * @since 1.1
-	 * @since 1.3 Added support for constant and filter. Renamed from `get_forced_color_scheme()`.
+	 * @since 2.0 Added support for constant and filter. Renamed from `get_forced_color_scheme()`.
 	 *
 	 * @return string The admin color scheme or empty string if color scheme was
 	 *                not set or is currently invalid.
@@ -204,7 +204,7 @@ class c2c_ForceAdminColorScheme {
 	 * NOTE: Does not prevent setting admin color when constant is in use.
 	 *
 	 * @since 1.1
-	 * @since 1.3 Renamed from `set_forced_color_scheme()`.
+	 * @since 2.0 Renamed from `set_forced_color_scheme()`.
 	 *
 	 * @param  string $color_scheme The color scheme name.
 	 * @return string The admin color scheme or empty string if color scheme was
@@ -230,7 +230,7 @@ class c2c_ForceAdminColorScheme {
 	 * Note: Does not validate whether the returned filter value corresponds to
 	 * an actual admin color scheme.
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 *
 	 * @return string The filtered admin color scheme. A blank string indicates
 	 *                that no filtering took place. The color scheme is not
@@ -243,7 +243,7 @@ class c2c_ForceAdminColorScheme {
 		 * If an empty string is returned, then it's as if the filter had
 		 * not been hooked.
 		 *
-		 * @since 1.3
+		 * @since 2.0
 		 *
 		 * @param string $new_color_scheme Empty string.
 		 * @param string $cur_color_scheme The currently configured forced admin color scheme.
@@ -259,7 +259,7 @@ class c2c_ForceAdminColorScheme {
 	 * Note: Does not validate whether the value corresponds to a legitimate
 	 * admin color scheme.
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 *
 	 * @return string The admin color scheme. A blank string indicates
 	 *                that no color scheme was defined. The color scheme is not
@@ -277,7 +277,7 @@ class c2c_ForceAdminColorScheme {
 	 * Note: This only returns a valid determination in the admin area and only
 	 * when not running a '-src' version of WordPress.
 	 *
-	 * @since 1.3
+	 * @since 2.0
 	 *
 	 * @return bool True if the color scheme exists, false otherwise.
 	 */
@@ -295,7 +295,7 @@ class c2c_ForceAdminColorScheme {
 	 * not currently exist, then the color scheme is not overridden.
 	 *
 	 * @since 1.0
-	 * @since 1.3 Rename from `force_admin_color()`.
+	 * @since 2.0 Rename from `force_admin_color()`.
 	 *
 	 * @param  string $admin_color_scheme The admin color scheme.
 	 * @return string
@@ -437,7 +437,7 @@ class c2c_ForceAdminColorScheme {
 	 * scheme is chosen).
 	 *
 	 * @since 1.1
-	 * @since 1.3 Renamed from `hide_admin_color_input()`.
+	 * @since 2.0 Renamed from `hide_admin_color_input()`.
 	 */
 	public static function hide_admin_color_scheme_picker() {
 		if ( ! current_user_can( 'manage_options' ) && self::get_forced_color_scheme() ) {
