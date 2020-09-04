@@ -433,7 +433,7 @@ class c2c_ForceAdminColorScheme {
 	 *
 	 * The input is hidden for users who do not have the capability to set the
 	 * forced admin color scheme *and* when an admin color scheme hasn't been
-	 * set yet (so that user's can still choose until a forced admin color
+	 * forced yet (so that users can still choose until a forced admin color
 	 * scheme is chosen).
 	 *
 	 * @since 1.1

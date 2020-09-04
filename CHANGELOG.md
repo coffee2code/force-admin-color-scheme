@@ -8,6 +8,7 @@
     * Change: Move `tests/` to `phpunit/tests/`
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
 * Change: Note compatibility through WP 5.5+
+* Change: Tweak function documentation
 
 ## 2.0 _(2020-05-22)_
 
