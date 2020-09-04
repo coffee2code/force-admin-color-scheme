@@ -61,6 +61,12 @@ Yes, but only via custom coding by making use of the `c2c_force_admin_color_sche
 
 The plugin will recognize that the chosen admin color scheme is no longer valid and will act as if one isn't set. In such a case, users would then see their individually chosen admin color schemes. If the custom admin color scheme becomes available again (before a new existing color scheme is selected as the new scheme to be forced), then the plugin will reinstate it as the forced admin color scheme.
 
+= Why is the admin color scheme picker still functional, or even still present at all, when the color scheme is set via the filter or constant and thus cannot be changed via the picker? =
+
+Just to be clear, if an admin color scheme is being forced, then non-admininistrative users won't see the admin color scheme picker at all.
+
+The plugin does not disable the admin color scheme picker for administrative users even if a value is directly configured in code (via the constant or the filter) so that the admin color schemes can still be seen and previewed in case an admin user wants to evaluate alternatives.
+
 = Does this plugin include unit tests? =
 
 Yes.

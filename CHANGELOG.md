@@ -9,6 +9,7 @@
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
 * Change: Note compatibility through WP 5.5+
 * Change: Tweak function documentation
+* Change: Add FAQ entry regarding continued appearance of admin color scheme picker when the color scheme can't be changed (due to being set via filter or constant)
 
 ## 2.0 _(2020-05-22)_
 
