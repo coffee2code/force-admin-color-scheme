@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 5.5
-Stable tag: 2.0
+Stable tag: 2.0.1
 
 Force a single admin color scheme for all users of the site.
 
@@ -102,6 +102,18 @@ add_filter( 'c2c_force_admin_color_scheme', 'my_c2c_force_admin_color_scheme' );
 
 == Changelog ==
 
+= 2.0.1 (2020-09-03) =
+* Change: Restructure unit test file structure
+    * New: Create new subdirectory `phpunit/` to house all files related to unit testing
+    * Change: Move `bin/` to `phpunit/bin/`
+    * Change: Move `tests/bootstrap.php` to `phpunit/`
+    * Change: Move `tests/` to `phpunit/tests/`
+    * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+* Change: Note compatibility through WP 5.5+
+* Change: Tweak function documentation
+* Change: Add FAQ entry regarding continued appearance of admin color scheme picker when the color scheme can't be changed (due to being set via filter or constant)
+* New: Add a few more possible TODO items
+
 = 2.0 (2020-05-22) =
 Hightlights:
 
@@ -143,21 +155,13 @@ Details:
 * New: Add link to CHANGELOG.md in README.md
 * Fix: Use full path to CHANGELOG.md in the Changelog section of readme.txt
 
-= 1.2 (2019-02-09) =
-* Change: Initialize plugin on `plugins_loaded` action instead of on load
-* New: Add CHANGELOG.md and move all but most recent changelog entries into it
-* Change: Note compatibility through WP 5.1+
-* Change: Add README.md link to plugin's page in Plugin Directory
-* Change: Update unit test install script and bootstrap to use latest WP unit test repo
-* Change: Update copyright date (2019)
-* Change: Update License URI to be HTTPS
-* Change: Update installation instruction to prefer built-in installer over .zip file
-* Change: Split paragraph in README.md's "Support" section into two
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/force-admin-color-scheme/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.0.1 =
+Trivial update: Restructured unit test file structure, tweaked documentation, and noted compatibility through WP 5.5+.
 
 = 2.0 =
 Feature update: added support for filter and constant, added stylish inline notices, added validation for color schemes, expanded unit test coverage, renamed a number of functions, added TODO.md file, updated a few URLs to be HTTPS, noted compatibility through WP 5.4+, and more.
