@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.5+
+
 ## 2.0 _(2020-05-22)_
 
 ### Hightlights:
