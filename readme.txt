@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 5.7
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 
 Force a single admin color scheme for all users of the site.
 
@@ -102,6 +102,10 @@ add_filter( 'c2c_force_admin_color_scheme', 'my_c2c_force_admin_color_scheme' );
 
 == Changelog ==
 
+= 2.0.2 (2021-04-11) =
+* Change: Note compatibility through WP 5.7+
+* Change: Update copyright date (2021)
+
 = 2.0.1 (2020-09-03) =
 * Change: Restructure unit test file structure
     * New: Create new subdirectory `phpunit/` to house all files related to unit testing
@@ -147,18 +151,13 @@ Details:
     * Change: Remove commented out code
 * New: Add screenshots for messages indicating use of constant or filter
 
-= 1.2.1 (2020-01-02) =
-* Change: Note compatibility through WP 5.3+
-* Change: Include additional usage steps in the "Installation" section of README.md
-* Change: Tweak wording of one of the use-cases for the plugin
-* Change: Update copyright date (2020)
-* New: Add link to CHANGELOG.md in README.md
-* Fix: Use full path to CHANGELOG.md in the Changelog section of readme.txt
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/force-admin-color-scheme/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.0.2 =
+Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)
 
 = 2.0.1 =
 Trivial update: Restructured unit test file structure, tweaked documentation, and noted compatibility through WP 5.5+.
