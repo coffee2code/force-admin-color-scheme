@@ -8,6 +8,7 @@
         * Change: Move `phpunit/bin` into `tests/`
     * Change: Remove 'test-' prefix from unit test file
     * Change: In bootstrap, store path to plugin file constant
+    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
 
 ## 2.0.2 _(2021-04-11)_
 * Change: Note compatibility through WP 5.7+
