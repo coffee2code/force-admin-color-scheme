@@ -331,7 +331,7 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-info">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translator: 1: name of constant, 2: name of forced admin color scheme */
+					/* translators: 1: name of constant, 2: name of forced admin color scheme. */
 					__( 'Currently forced admin color scheme (via the constant %1$s, and thus cannot be changed above): %2$s', 'force-admin-color-scheme' ),
 					'<strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>',
 					'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
@@ -347,7 +347,7 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-info">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translator: 1: name of filter, 2: name of forced admin color scheme */
+					/* translators: 1: name of filter, 2: name of forced admin color scheme. */
 					__( 'Currently forced admin color scheme (via the filter %1$s, and thus cannot be changed above): %2$s', 'force-admin-color-scheme' ),
 					'<strong><code>c2c_force_admin_color_scheme</code></strong>',
 					'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
@@ -384,7 +384,7 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-warning">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translator: 1: name of constant, 2: name of forced admin color scheme */
+					/* translators: 1: name of constant, 2: name of forced admin color scheme. */
 					__( '<strong>Notice:</strong> The constant %1$s is defined with an invalid color scheme (%2$s) and is being ignored.', 'force-admin-color-scheme' ),
 					'<strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>',
 					'<strong>' . esc_html( $constant_color_scheme ) . '</strong>'
@@ -398,7 +398,7 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-warning">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translator: 1: name of filter, 2: name of forced admin color scheme */
+					/* translators: 1: name of filter, 2: name of forced admin color scheme. */
 					__( '<strong>Notice:</strong> The filter %1$s is hooked and returns an invalid color scheme (%2$s) and is being ignored.', 'force-admin-color-scheme' ),
 					'<strong><code>c2c_force_admin_color_scheme</code></strong>',
 					'<strong>' . esc_html( $filtered_color_scheme ) . '</strong>'
