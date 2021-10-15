@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 5.8
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 
 Force a single admin color scheme for all users of the site.
 
@@ -102,6 +102,18 @@ add_filter( 'c2c_force_admin_color_scheme', 'my_c2c_force_admin_color_scheme' );
 
 == Changelog ==
 
+= 2.0.3 (2021-10-14) =
+* Change: Use 'translators' instead of 'translator' as prefix for translator comments
+* Change: Note compatibility through WP 5.8+
+* Change: Tweak installation instruction
+* Unit tests:
+    * Change: Restructure unit test directories
+        * Change: Move `phpunit/` into `tests/`
+        * Change: Move `phpunit/bin` into `tests/`
+    * Change: Remove 'test-' prefix from unit test file
+    * Change: In bootstrap, store path to plugin file constant
+    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
+
 = 2.0.2 (2021-04-11) =
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
@@ -118,43 +130,13 @@ add_filter( 'c2c_force_admin_color_scheme', 'my_c2c_force_admin_color_scheme' );
 * Change: Add FAQ entry regarding continued appearance of admin color scheme picker when the color scheme can't be changed (due to being set via filter or constant)
 * New: Add a few more possible TODO items
 
-= 2.0 (2020-05-22) =
-Hightlights:
-
-* This feature release adds support for programmatically customizing forced admin color scheme via a filter and/or constant, adds stylish inline notices, adds validation for color schemes, expands unit test coverage, renames a number of functions, adds TODO.md, updates compatibility through WP 5.4+, and a few more minor changes.
-
-Details:
-
-* New: Add filter `c2c_force_admin_color_scheme` to set or override admin color scheme
-    * New: Add `get_filtered_color_scheme()` to get the filtered admin color scheme
-* New: Add support for constant to set admin color scheme, `C2C_FORCE_ADMIN_COLOR_SCHEME`
-    * New: Add `is_constant_set()` to determine if constant was used to set the forced admin color scheme
-    * New: Add `get_color_scheme_via_constant()` to get the admin color scheme specified via the constant
-    * New: Show message to users who can force an admin color scheme when the forced admin color scheme was set via the constant
-* New: Verify validity of admin color scheme on save and on retrieval
-    * New: Add `is_valid_color_scheme()` to check if a given admin color scheme is valid
-    * Change: Modify `get_forced_color_scheme()` to not return an invalid admin color scheme
-    * Change: Modify `set_forced_color_scheme()` to not save an invalid admin color scheme
-* New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add to it)
-* Change: Output currently forced admin color scheme beneath the color scheme picker for admins via a notice similar to an admin notice
-* Change: Ensure admin color scheme name is lowercased before validation, saving, and comparisons
-* Change: Rename `get_forced_admin_color()` to `get_forced_color_scheme()`
-* Change: Rename `set_forced_admin_color()` to `set_forced_color_scheme()`
-* Change: Rename `force_admin_color()` to `force_color_scheme()`
-* Change: Rename `hide_admin_color_input()` to `hide_admin_color_scheme_picker()`
-* Change: Tweak attribute spacing for `label` tag
-* Change: Use HTTPS for link to WP SVN repository in bin script for configuring unit tests
-* Change: Note compatibility through WP 5.4+
-* Change: Update links to coffee2code.com to be HTTPS
-* Unit tests:
-    * New: Add tests for `add_checkbox()`, `force_admin_color()`, `hide_admin_color_scheme_picker()`, `output_css()`, `register_css()`, `save_setting()`, `set_forced_color_scheme()`
-    * Change: Remove commented out code
-* New: Add screenshots for messages indicating use of constant or filter
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/force-admin-color-scheme/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.0.3 =
+Trivial update: noted compatibility through WP 5.8+ and minor reorganization and tweaks to unit tests
 
 = 2.0.2 =
 Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)
