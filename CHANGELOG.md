@@ -6,6 +6,7 @@
 * New: Add `.gitignore` file
 * Change: Remove development and testing-related files from release packaging
 * Change: Tweak formatting in `README.md`
+* Change: Fix some typos in inline documentation
 
 ## 2.0.3 _(2021-10-14)_
 * Change: Use 'translators' instead of 'translator' as prefix for translator comments

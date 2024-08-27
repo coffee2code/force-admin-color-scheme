@@ -178,7 +178,7 @@ class c2c_ForceAdminColorScheme {
 			$color_scheme = '';
 		}
 
-		// If constant not defined or invalid, then filter current valie.
+		// If constant not defined or invalid, then filter current value.
 		if ( ! $color_scheme ) {
 			$color_scheme = self::get_filtered_color_scheme();
 			if ( ! self::is_valid_color_scheme( $color_scheme ) ) {
@@ -186,7 +186,7 @@ class c2c_ForceAdminColorScheme {
 			}
 		}
 
-		// If filtered value is not defined or invalid, then use current valie.
+		// If filtered value is not defined or invalid, then use current value.
 		if ( ! $color_scheme ) {
 			$color_scheme = get_option( self::get_setting_name() );
 			if ( ! self::is_valid_color_scheme( $color_scheme ) ) {
