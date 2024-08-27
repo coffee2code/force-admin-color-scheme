@@ -331,10 +331,13 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-info">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translators: 1: name of constant, 2: name of forced admin color scheme. */
-					__( 'Currently forced admin color scheme (via the constant %1$s, and thus cannot be overridden above): %2$s', 'force-admin-color-scheme' ),
+					wp_kses(
+						/* translators: 1: name of constant, 2: name of forced admin color scheme. */
+						__( 'Currently forced admin color scheme (via the constant %1$s, and thus cannot be overridden above): %2$s', 'force-admin-color-scheme' ),
+						array( 'strong' => '', 'code' => '' )
+					),
 					'<strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>',
-					'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
+					'<strong>' . esc_html( ucfirst( $forced_admin_color ) ) . '</strong>'
 				)
 			);
 
@@ -347,10 +350,13 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-info">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translators: 1: name of filter, 2: name of forced admin color scheme. */
-					__( 'Currently forced admin color scheme (via the filter %1$s, and thus cannot be overridden above): %2$s', 'force-admin-color-scheme' ),
+					wp_kses(
+						/* translators: 1: name of filter, 2: name of forced admin color scheme. */
+						__( 'Currently forced admin color scheme (via the filter %1$s, and thus cannot be overridden above): %2$s', 'force-admin-color-scheme' ),
+						array( 'strong' => '', 'code' => '' )
+					),
 					'<strong><code>c2c_force_admin_color_scheme</code></strong>',
-					'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
+					'<strong>' . esc_html( ucfirst( $forced_admin_color ) ) . '</strong>'
 				)
 			);
 
@@ -363,7 +369,7 @@ class c2c_ForceAdminColorScheme {
 			esc_attr( $setting ),
 			esc_attr( $setting ),
 			checked( ! empty( $forced_admin_color ), true, false ),
-			__( 'Force this admin color scheme on all users?', 'force-admin-color-scheme' )
+			esc_html__( 'Force this admin color scheme on all users?', 'force-admin-color-scheme' )
 		);
 
 		// Output notice about currently forced admin color scheme.
@@ -372,8 +378,11 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-info">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					__( 'Currently forced admin color scheme: %s', 'force-admin-color-scheme' ),
-					'<strong>' . ucfirst( $forced_admin_color ) . '</strong>'
+					wp_kses(
+						__( 'Currently forced admin color scheme: %s', 'force-admin-color-scheme' ),
+						array( 'strong' => '' )
+					),
+					'<strong>' . esc_html( ucfirst( $forced_admin_color ) ) . '</strong>'
 				)
 			);
 		}
@@ -384,8 +393,11 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-warning">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translators: 1: name of constant, 2: name of forced admin color scheme. */
-					__( '<strong>Notice:</strong> The constant %1$s is defined with an invalid color scheme (%2$s) and is being ignored.', 'force-admin-color-scheme' ),
+					wp_kses(
+						/* translators: 1: name of constant, 2: name of forced admin color scheme. */
+						__( '<strong>Notice:</strong> The constant %1$s is defined with an invalid color scheme (%2$s) and is being ignored.', 'force-admin-color-scheme' ),
+						array( 'strong' => array() )
+					),
 					'<strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>',
 					'<strong>' . esc_html( $constant_color_scheme ) . '</strong>'
 				)
@@ -398,8 +410,11 @@ class c2c_ForceAdminColorScheme {
 				'<em class="%s notice notice-warning">%s</em>',
 				esc_attr( $setting ),
 				sprintf(
-					/* translators: 1: name of filter, 2: name of forced admin color scheme. */
-					__( '<strong>Notice:</strong> The filter %1$s is hooked and returns an invalid color scheme (%2$s) and is being ignored.', 'force-admin-color-scheme' ),
+					wp_kses(
+						/* translators: 1: name of filter, 2: name of forced admin color scheme. */
+						__( '<strong>Notice:</strong> The filter %1$s is hooked and returns an invalid color scheme (%2$s) and is being ignored.', 'force-admin-color-scheme' ),
+						array( 'strong' => array() )
+					),
 					'<strong><code>c2c_force_admin_color_scheme</code></strong>',
 					'<strong>' . esc_html( $filtered_color_scheme ) . '</strong>'
 				)
@@ -475,7 +490,8 @@ class c2c_ForceAdminColorScheme {
 		if ( $css ) {
 			$css .= "\n.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }";
 
-			echo "<style>{$css}</style>\n";
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Safely escaped.
+			echo '<style>' . wp_strip_all_tags( $css ) . "</style>\n";
 		}
 	}
 
