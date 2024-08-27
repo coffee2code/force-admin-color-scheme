@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 6.6+
+
 ## 2.0.3 _(2021-10-14)_
 * Change: Use 'translators' instead of 'translator' as prefix for translator comments
 * Change: Note compatibility through WP 5.8+
