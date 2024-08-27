@@ -5,6 +5,7 @@
 * Change: Update copyright date (2024)
 * New: Add `.gitignore` file
 * Change: Remove development and testing-related files from release packaging
+* Change: Tweak formatting in `README.md`
 
 ## 2.0.3 _(2021-10-14)_
 * Change: Use 'translators' instead of 'translator' as prefix for translator comments
