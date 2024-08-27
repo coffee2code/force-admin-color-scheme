@@ -435,11 +435,9 @@ class c2c_ForceAdminColorScheme {
 	 */
 	public static function save_setting( $user_id ) {
 		if ( current_user_can( 'manage_options' ) && ! self::is_constant_set() ) {
-			// Unset the forced admin color if the checkbox is unchecked or no color was
-			// specified.
-			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] )
-				? ''
-				: $_POST['admin_color'];
+			// Unset the forced admin color if the checkbox is unchecked or no color was specified.
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce checked by WP prior to action to which this function is hooked.
+			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] ) ? '' : $_POST['admin_color'];
 			self::set_forced_color_scheme( $new_color );
 		}
 	}

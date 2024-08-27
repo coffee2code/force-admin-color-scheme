@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Change: Prevent translations from containing unintended markup
+* Change: Prevent unwarranted PHPCS complaint
 * Change: Change word used in output string
 * Change: Add missing inline comment for translators
 * Change: Note compatibility through WP 6.6+
