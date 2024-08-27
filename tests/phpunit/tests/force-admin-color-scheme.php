@@ -356,7 +356,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'administrator' );
 		add_filter( 'c2c_force_admin_color_scheme', function ( $color ) { return 'midnight'; } );
 
-		$expected = '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme (via the filter <strong><code>c2c_force_admin_color_scheme</code></strong>, and thus cannot be changed above): <strong>Midnight</strong></em>';
+		$expected = '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme (via the filter <strong><code>c2c_force_admin_color_scheme</code></strong>, and thus cannot be overridden above): <strong>Midnight</strong></em>';
 		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
@@ -567,7 +567,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	public function test_add_checkbox_outputs_message_for_user_with_cap_when_constant_is_set_even_when_forced_color_set() {
 		$this->create_user( 'administrator' );
 
-		$expected = '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme (via the constant <strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>, and thus cannot be changed above): <strong>Coffee</strong></em>';
+		$expected = '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme (via the constant <strong><code>C2C_FORCE_ADMIN_COLOR_SCHEME</code></strong>, and thus cannot be overridden above): <strong>Coffee</strong></em>';
 		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );

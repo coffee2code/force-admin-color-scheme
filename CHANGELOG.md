@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Change word used in output string
 * Change: Note compatibility through WP 6.6+
 * Change: Update copyright date (2024)
 * New: Add `.gitignore` file
