@@ -8,7 +8,10 @@
 * Change: Tweak formatting in `README.md`
 * Change: Fix some typos in inline documentation
 * Unit tests:
+    * Allow tests to run against current versions of WordPress
+    * New: Add `composer.json` for PHPUnit Polyfill dependency
     * Change: In bootstrap, store path to plugin directory in a constant
+    * Change: Prevent PHP warnings due to missing core-related generated files
 
 ## 2.0.3 _(2021-10-14)_
 * Change: Use 'translators' instead of 'translator' as prefix for translator comments
