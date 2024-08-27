@@ -11,7 +11,7 @@
 define( 'FORCE_ADMIN_COLOR_SCHEME_PLUGIN_DIR',  dirname( __FILE__, 3 ) );
 define( 'FORCE_ADMIN_COLOR_SCHEME_PLUGIN_FILE', FORCE_ADMIN_COLOR_SCHEME_PLUGIN_DIR . '/force-admin-color-scheme.php' );
 
-$polyfill_path = MASTER_POST_PASSWORD_PLUGIN_DIR . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
+$polyfill_path = FORCE_ADMIN_COLOR_SCHEME_PLUGIN_DIR . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php';
 if ( file_exists( $polyfill_path ) ) {
 	require $polyfill_path;
 } else {
