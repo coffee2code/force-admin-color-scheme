@@ -5,6 +5,9 @@
  * @package Force_Admin_Color_Scheme
  */
 
+// Prevent web access.
+( php_sapi_name() !== 'cli' ) && die();
+
 define( 'FORCE_ADMIN_COLOR_SCHEME_PLUGIN_DIR',  dirname( __FILE__, 3 ) );
 define( 'FORCE_ADMIN_COLOR_SCHEME_PLUGIN_FILE', FORCE_ADMIN_COLOR_SCHEME_PLUGIN_DIR . '/force-admin-color-scheme.php' );
 
