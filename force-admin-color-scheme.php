@@ -379,6 +379,7 @@ class c2c_ForceAdminColorScheme {
 				esc_attr( $setting ),
 				sprintf(
 					wp_kses(
+						/* translators: %s: Name of forced admin color scheme. */
 						__( 'Currently forced admin color scheme: %s', 'force-admin-color-scheme' ),
 						array( 'strong' => '' )
 					),
