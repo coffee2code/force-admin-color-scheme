@@ -188,7 +188,7 @@ class c2c_ForceAdminColorScheme {
 
 		// If filtered value is not defined or invalid, then use current value.
 		if ( ! $color_scheme ) {
-			$color_scheme = get_option( self::get_setting_name() );
+			$color_scheme = self::get_color_scheme_via_setting();
 			if ( ! self::is_valid_color_scheme( $color_scheme ) ) {
 				$color_scheme = '';
 			}
@@ -248,7 +248,7 @@ class c2c_ForceAdminColorScheme {
 		 * @param string $new_color_scheme Empty string.
 		 * @param string $cur_color_scheme The currently configured forced admin color scheme.
 		 */
-		$filtered_color_scheme = apply_filters( 'c2c_force_admin_color_scheme', '', get_option( self::get_setting_name(), '' ) );
+		$filtered_color_scheme = apply_filters( 'c2c_force_admin_color_scheme', '', self::get_color_scheme_via_setting() );
 
 		return is_string( $filtered_color_scheme ) ? strtolower( $filtered_color_scheme ) : '';
 	}
@@ -269,6 +269,19 @@ class c2c_ForceAdminColorScheme {
 		$color_scheme = self::is_constant_set() ? C2C_FORCE_ADMIN_COLOR_SCHEME : '';
 
 		return is_string( $color_scheme ) ? strtolower( $color_scheme ) : '';
+	}
+
+	/**
+	 * Returns the admin color scheme as set via the plugin's setting.
+	 *
+	 * @since 2.1
+	 *
+	 * @return string The admin color scheme. A blank string indicates
+	 *                that no color scheme was defined. The color scheme is not
+	 *                verified as being a legitimate admin color scheme.
+	 */
+	public static function get_color_scheme_via_setting() {
+		return get_option( self::get_setting_name(), '' );
 	}
 
 	/**

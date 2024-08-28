@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add `get_color_scheme_via_setting()` to get the forced admin color scheme saved as a plugin setting
 * Change: Prevent translations from containing unintended markup
 * Change: Prevent unwarranted PHPCS complaint
 * Change: Change word used in output string

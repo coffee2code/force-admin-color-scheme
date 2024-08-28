@@ -287,11 +287,43 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	}
 
 	/*
-	 * get_color_scheme_via_constant()
+	 * get_color_scheme_via_constant() (when constant not set)
 	 */
 
 	public function test_get_color_scheme_via_constant() {
 		$this->assertEmpty( c2c_ForceAdminColorScheme::get_color_scheme_via_constant() );
+	}
+
+	/*
+	 * get_color_scheme_via_setting()
+	 */
+
+	public function test_get_color_scheme_via_setting() {
+		$expected = 'ocean';
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( $expected );
+
+		$this->assertEquals( $expected, c2c_ForceAdminColorScheme::get_color_scheme_via_setting() );
+	}
+
+	public function test_get_color_scheme_via_setting_when_value_is_invalid() {
+		$expected = 'bogus';
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( $expected );
+
+		$this->assertEmpty( c2c_ForceAdminColorScheme::get_color_scheme_via_setting() );
+	}
+
+	public function test_get_color_scheme_via_setting_matches_option_value() {
+		$option = c2c_ForceAdminColorScheme::get_setting_name();
+
+		$expected = 'ocean';
+		update_option( $option, $expected );
+
+		$this->assertEquals( $expected, c2c_ForceAdminColorScheme::get_color_scheme_via_setting() );
+
+		$expected = 'light';
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( $expected );
+
+		$this->assertEquals( $expected, c2c_ForceAdminColorScheme::get_color_scheme_via_setting() );
 	}
 
 	/*
@@ -598,6 +630,14 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( 'coffee', get_user_option( 'admin_color' ) );
 		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::get_forced_color_scheme() );
 		$this->assertEmpty( get_option( c2c_ForceAdminColorScheme::get_setting_name() ) );
+	}
+
+	public function test_get_color_scheme_via_setting_when_constant_is_used() {
+		$expected = 'ocean';
+		$this->test_get_color_scheme_via_constant_when_constant_is_set();
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( $expected );
+
+		$this->assertEquals( $expected, c2c_ForceAdminColorScheme::get_color_scheme_via_setting() );
 	}
 
 }
