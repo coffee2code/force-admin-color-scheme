@@ -592,6 +592,12 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::get_color_scheme_via_constant() );
 	}
 
+	public function test_get_color_scheme_via_constant_when_setting_subsequently_set() {
+		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
+
+		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::get_color_scheme_via_constant() );
+	}
+
 	public function test_is_constant_set_when_constant_is_set() {
 		$this->assertTrue( c2c_ForceAdminColorScheme::is_constant_set() );
 	}
