@@ -424,7 +424,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 			. '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme: <strong>Ocean</strong></em>'
 			. '<em class="c2c_forced_admin_color notice notice-warning"><strong>Notice:</strong> The filter <strong><code>c2c_force_admin_color_scheme</code></strong> is hooked and returns an invalid color scheme (<strong>bogus</strong>) and is being ignored.</em>';
 
-			$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
+		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
 	}
 
 	/*
