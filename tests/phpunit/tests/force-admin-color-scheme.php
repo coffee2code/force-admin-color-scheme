@@ -624,7 +624,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->assertEquals( $expected, get_user_option( 'admin_color' ) );
 	}
 
-	public function test_save_setting_does_not_save_for_user_with_cap_if_constant_set() {
+	public function test_save_setting_saves_for_user_with_cap_even_if_constant_set() {
 		$user_id = $this->create_user( 'administrator' );
 		$_POST = array(
 			'admin_color'            => 'sunrise',
@@ -635,7 +635,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
 		$this->assertEquals( 'coffee', get_user_option( 'admin_color' ) );
 		$this->assertEquals( 'coffee', c2c_ForceAdminColorScheme::get_forced_color_scheme() );
-		$this->assertEmpty( c2c_ForceAdminColorScheme::get_color_scheme_via_setting() );
+		$this->assertEquals( 'sunrise', c2c_ForceAdminColorScheme::get_color_scheme_via_setting() );
 	}
 
 	public function test_get_color_scheme_via_setting_when_constant_is_used() {

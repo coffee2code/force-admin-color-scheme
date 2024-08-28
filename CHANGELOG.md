@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* Fix: Allow saving a forced admin color scheme even if constant is set (the constant will still take precedence unless invalid)
 * New: Add `get_color_scheme_via_setting()` to get the forced admin color scheme saved as a plugin setting
 * Change: Prevent translations from containing unintended markup
 * Change: Prevent unwarranted PHPCS complaint
