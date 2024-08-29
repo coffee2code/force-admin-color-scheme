@@ -5,6 +5,7 @@
 * New: Add `get_color_scheme_via_setting()` to get the forced admin color scheme saved as a plugin setting
 * Change: Prevent translations from containing unintended markup
 * Change: Prevent unwarranted PHPCS complaint
+* Change: Add FAQ entry regarding allowing users to choose admin colors schemes again
 * Change: Change word used in output string
 * Change: Add missing inline comment for translators
 * Change: Note compatibility through WP 6.6+

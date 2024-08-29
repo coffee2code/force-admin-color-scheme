@@ -51,7 +51,11 @@ Have you followed all of the installation instructions? You must configure the f
 
 = How do I resume letting users pick their own color schemes? =
 
-Uncheck the "Force this admin color scheme?" when updating an administrative profile (assuming the plugin's provided constant and/or filter aren't being used), or simply deactivate the plugin.
+You can simply deactivate the plugin. Though bear in mind that if you later reactivate the plugin, the forced color scheme at the time the plugin was deactivated (if there was one) may be reinstated (depending on if the constant, hooked filter, and/or plugin setting are still present).
+
+To keep the plugin active, you can pursue the following steps (whichever may apply to you):
+* If the forced color scheme is being set via the constant or code making use of the filter hook, then the code relating to either of those cases must be commented out or disabled.
+* If the "Force this admin color scheme?" setting was used, then update an administrative profile to uncheck the checkbox and save.
 
 = Can I force different admin color schemes based on the user? =
 
