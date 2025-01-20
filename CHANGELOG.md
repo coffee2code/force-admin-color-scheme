@@ -8,7 +8,7 @@
 * Change: Add FAQ entry regarding allowing users to choose admin colors schemes again
 * Change: Change word used in output string
 * Change: Add missing inline comment for translators
-* Change: Note compatibility through WP 6.6+
+* Change: Note compatibility through WP 6.7+
 * Change: Update copyright date (2025)
 * New: Add `.gitignore` file
 * Change: Remove development and testing-related files from release packaging
