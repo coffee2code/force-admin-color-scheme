@@ -20,6 +20,7 @@
     * New: Add `composer.json` for PHPUnit Polyfill dependency
     * Change: In bootstrap, store path to plugin directory in a constant
     * Change: Prevent PHP warnings due to missing core-related generated files
+* Change: Add more potential TODO items and reformat some existing entries
 
 ## 2.0.3 _(2021-10-14)_
 * Change: Use 'translators' instead of 'translator' as prefix for translator comments
