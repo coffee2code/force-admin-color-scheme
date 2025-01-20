@@ -385,6 +385,13 @@ class c2c_ForceAdminColorScheme {
 			esc_html__( 'Force this admin color scheme on all users?', 'force-admin-color-scheme' )
 		);
 
+		// Output help text to make it clear that unchecking the checkbox will clear the forced admin color scheme.
+		if ( $forced_admin_color ) {
+			echo '<p class="description c2c_forced_admin_color_message">';
+			esc_html_e( 'Unchecking this will remove the forced admin color scheme. Whatever color scheme you have selected will then just become your personal choice.', 'force-admin-color-scheme' );
+			echo "</p>\n";
+		}
+
 		// Output notice about currently forced admin color scheme.
 		if ( $forced_admin_color ) {
 			printf(
@@ -501,6 +508,7 @@ class c2c_ForceAdminColorScheme {
 
 		if ( $css ) {
 			$css .= "\n.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }";
+			$css .= "\n.wrap .c2c_forced_admin_color_message { padding-left: 40px; }";
 
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Safely escaped.
 			echo '<style>' . wp_strip_all_tags( $css ) . "</style>\n";

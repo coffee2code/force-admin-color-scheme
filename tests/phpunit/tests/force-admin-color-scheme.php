@@ -379,6 +379,9 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" checked=\'checked\' /> '
 			. 'Force this admin color scheme on all users?'
 			. '</label>'
+			. '<p class="description c2c_forced_admin_color_message">'
+			. 'Unchecking this will remove the forced admin color scheme. Whatever color scheme you have selected will then just become your personal choice.'
+			. "</p>\n"
 			. '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme: <strong>Ocean</strong></em>';
 
 		$this->expectOutputRegex( '~^' . preg_quote( $expected ) . '$~', c2c_ForceAdminColorScheme::add_checkbox() );
@@ -421,6 +424,9 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$expected = '<label for="c2c_forced_admin_color"><input name="c2c_forced_admin_color" type="checkbox" id="c2c_forced_admin_color" value="true" checked=\'checked\' /> '
 			. 'Force this admin color scheme on all users?'
 			. '</label>'
+			. '<p class="description c2c_forced_admin_color_message">'
+			. 'Unchecking this will remove the forced admin color scheme. Whatever color scheme you have selected will then just become your personal choice.'
+			. "</p>\n"
 			. '<em class="c2c_forced_admin_color notice notice-info">Currently forced admin color scheme: <strong>Ocean</strong></em>'
 			. '<em class="c2c_forced_admin_color notice notice-warning"><strong>Notice:</strong> The filter <strong><code>c2c_force_admin_color_scheme</code></strong> is hooked and returns an invalid color scheme (<strong>bogus</strong>) and is being ignored.</em>';
 
@@ -533,7 +539,8 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 	public function test_output_css_for_user_with_cap() {
 		$this->create_user( 'administrator' );
 		$expected = 'label[for="c2c_forced_admin_color"], .c2c_forced_admin_color { display: block; padding-left: 15px; margin-top: 10px; }'
-			. "\n" . '.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }';
+			. "\n" . '.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }'
+			. "\n" . '.wrap .c2c_forced_admin_color_message { padding-left: 40px; }';
 
 		$this->expectOutputRegex( '~^<style>' . preg_quote( $expected ) . '</style>$~', c2c_ForceAdminColorScheme::output_css() );
 	}
@@ -542,7 +549,8 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		$this->create_user( 'editor' );
 		c2c_ForceAdminColorScheme::set_forced_color_scheme( 'ocean' );
 		$expected = '.user-admin-color-wrap { display: none; }'
-			. "\n" . '.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }';
+			. "\n" . '.wrap .c2c_forced_admin_color.notice { line-height: 2em; margin-left: 15px; margin-top: 15px; margin-bottom: 0; }'
+			. "\n" . '.wrap .c2c_forced_admin_color_message { padding-left: 40px; }';
 
 		$this->expectOutputRegex( '~^<style>' . preg_quote( $expected ) . '</style>$~', c2c_ForceAdminColorScheme::output_css() );
 	}

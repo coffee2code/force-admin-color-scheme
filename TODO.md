@@ -24,10 +24,6 @@ The following list comprises ideas, suggestions, and known issues, all of which 
   * Default should be "User selected", and for environment type "Forced color" (w/o a "User selected" option)
   * Perhaps hide environment type forced color fields initially, requiring clicking of "Force admin
   * Add filter and constant for forced environment type colors
-* Make it clear how to unset a forced admin color scheme
-  * Address the confusion in that the setting is labeled "Force this admin color scheme on all users?".
-    * Maybe add a note when a color scheme is forced to clarify that unchecking the checkbox will clear the forced color scheme and save the chosen color scheme for just the current user
-  * What if admin unchecked the setting and set a new color scheme? That does unset the forced color scheme, but could be interpreted to mean to *not* change the forced color scheme but rather make a new personal color scheme choice that they don't want to be forced, even though it may not immediately be used since the forced scheme would still be in force.
 * Add support for a constant for a color backup to use if an invalid color scheme was configured.
   * Ideally this would be one of the core color schemes, but that's not necessary and doesn't need to be enforced.
 * Add support for constants to define an array of colors
