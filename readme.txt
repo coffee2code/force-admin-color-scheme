@@ -71,7 +71,7 @@ Just to be clear, if an admin color scheme is being forced, then non-admininistr
 
 The plugin does not disable the admin color scheme picker for administrative users even if a value is directly configured in code (via the constant or the filter) so that the admin color schemes can still be seen and previewed in case an admin user wants to evaluate alternatives.
 
-= Does this plugin include unit tests? =
+= Does this plugin have unit tests? =
 
 Yes. The tests are not packaged in the release .zip file or included in plugins.svn.wordpress.org, but can be found in the [plugin's GitHub repository](https://github.com/coffee2code/force-admin-color-scheme/).
 
