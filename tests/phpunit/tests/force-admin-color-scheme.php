@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die();
 
 class test_ForceAdminColorScheme extends WP_UnitTestCase {
 
-	public static function setUpBeforeClass() {
+	public static function setUpBeforeClass(): void {
 		// Make all requests as if in the admin, which is the only place the plugin
 		// affects.
 		define( 'WP_ADMIN', true );
@@ -21,7 +21,7 @@ class test_ForceAdminColorScheme extends WP_UnitTestCase {
 		register_admin_color_schemes();
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		parent::tearDown();
 		$this->unset_current_user();
 	}

@@ -20,6 +20,7 @@
     * Hardening: Prevent direct web access to `bootstrap.php`
     * Allow tests to run against current versions of WordPress
     * New: Add `composer.json` for PHPUnit Polyfill dependency
+    * Change: Explicitly define return type for overridden methods
     * Change: In bootstrap, store path to plugin directory in a constant
     * Change: Prevent PHP warnings due to missing core-related generated files
 * Change: Add more potential TODO items and reformat some existing entries
