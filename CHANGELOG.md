@@ -5,6 +5,7 @@
 * New: Add help text under the checkbox, if checked, to clarify that unchecking it will unset the forced color scheme
 * New: Add `get_color_scheme_via_setting()` to get the forced admin color scheme saved as a plugin setting
 * Change: Prevent translations from containing unintended markup
+* Hardening: Sanitize submitted color scheme name
 * Change: Prevent unwarranted PHPCS complaint
 * Change: Add FAQ entry regarding allowing users to choose admin colors schemes again
 * Change: Change word used in output string

@@ -457,7 +457,7 @@ class c2c_ForceAdminColorScheme {
 		if ( current_user_can( 'manage_options' ) ) {
 			// Unset the forced admin color if the checkbox is unchecked or no color was specified.
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce checked by WP prior to action to which this function is hooked.
-			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] ) ? '' : $_POST['admin_color'];
+			$new_color = empty( $_POST[ self::get_setting_name() ] ) || empty( $_POST['admin_color'] ) ? '' : sanitize_title( wp_unslash( $_POST['admin_color'] ) );
 			self::set_forced_color_scheme( $new_color );
 		}
 	}
