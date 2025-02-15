@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.1
 Tested up to: 6.8
-Stable tag: 2.0.3
+Stable tag: 2.1
 
 Force a single admin color scheme for all users of the site.
 
@@ -106,6 +106,38 @@ add_filter( 'c2c_force_admin_color_scheme', 'my_c2c_force_admin_color_scheme' );
 
 == Changelog ==
 
+= 2.1 (2025-02-15) =
+Highlights:
+
+This minor release fixes a bug that prevented a forced color scheme from being set or unset if one was being forced via the constant, adds clarifying help text, prevents markup from containing unintended markup, removes unit tests from release packaging, updates compatibility through WP 6.8+, and a few more minor changes.
+
+Details:
+
+* Fix: Allow saving a forced admin color scheme even if constant is set (the constant will still take precedence unless invalid)
+* New: Add help text under the checkbox, if checked, to clarify that unchecking it will unset the forced color scheme
+* New: Add `get_color_scheme_via_setting()` to get the forced admin color scheme saved as a plugin setting
+* Change: Prevent translations from containing unintended markup
+* Hardening: Sanitize submitted color scheme name
+* Change: Prevent unwarranted PHPCS complaint
+* Change: Add FAQ entry regarding allowing users to choose admin colors schemes again
+* Change: Change word used in output string
+* Change: Add missing inline comment for translators
+* Change: Note compatibility through WP 6.8+
+* Change: Note compatibility through PHP 8.3+
+* Change: Update copyright date (2025)
+* New: Add `.gitignore` file
+* Change: Remove development and testing-related files from release packaging
+* Change: Tweak formatting in `README.md`
+* Change: Fix some typos in inline documentation
+* Unit tests:
+    * Hardening: Prevent direct web access to `bootstrap.php`
+    * Allow tests to run against current versions of WordPress
+    * New: Add `composer.json` for PHPUnit Polyfill dependency
+    * Change: Explicitly define return type for overridden methods
+    * Change: In bootstrap, store path to plugin directory in a constant
+    * Change: Prevent PHP warnings due to missing core-related generated files
+* Change: Add more potential TODO items and reformat some existing entries
+
 = 2.0.3 (2021-10-14) =
 * Change: Use 'translators' instead of 'translator' as prefix for translator comments
 * Change: Note compatibility through WP 5.8+
@@ -122,22 +154,13 @@ add_filter( 'c2c_force_admin_color_scheme', 'my_c2c_force_admin_color_scheme' );
 * Change: Note compatibility through WP 5.7+
 * Change: Update copyright date (2021)
 
-= 2.0.1 (2020-09-03) =
-* Change: Restructure unit test file structure
-    * New: Create new subdirectory `phpunit/` to house all files related to unit testing
-    * Change: Move `bin/` to `phpunit/bin/`
-    * Change: Move `tests/bootstrap.php` to `phpunit/`
-    * Change: Move `tests/` to `phpunit/tests/`
-    * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
-* Change: Note compatibility through WP 5.5+
-* Change: Tweak function documentation
-* Change: Add FAQ entry regarding continued appearance of admin color scheme picker when the color scheme can't be changed (due to being set via filter or constant)
-* New: Add a few more possible TODO items
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/force-admin-color-scheme/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.1 =
+Minor release: fixed bug where use of constant prevented admin UI color changes from being saved, added clarifying help text, prevented translations from containing unintended markup, noted compatibility through WP 6.8+, removed unit tests from release packaging, and updated copyright date (2025)
 
 = 2.0.3 =
 Trivial update: noted compatibility through WP 5.8+ and minor reorganization and tweaks to unit tests
